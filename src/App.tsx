@@ -1,33 +1,16 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import InputColour from './components/InputColour'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+        <div>
+          <svg className="logo rainbow-box h-50 w-50 stroke-1 stroke-black fill-black dark:stroke-white dark:fill-white" stroke="currentColor" fill="currentColor" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24" width="512" height="512">
+            <path d="M23,21a1,1,0,0,1-1-1V15C21.449,1.73,2.546,1.741,2,15v5a1,1,0,0,1-2,0V15C.661-.924,23.345-.911,24,15v5A1,1,0,0,1,23,21Zm-3-1V15C19.6,4.4,4.4,4.407,4,15v5a1,1,0,0,0,2,0V15c.253-7.932,11.75-7.926,12,0v5a1,1,0,0,0,2,0Zm-4,0V15a4,4,0,0,0-8,0v5a1,1,0,0,0,2,0V15a2,2,0,0,1,4,0v5a1,1,0,0,0,2,0Z"/>
+          </svg>
+        </div>
+      <h1>Iris</h1>
+        <InputColour />
     </>
   )
 }
