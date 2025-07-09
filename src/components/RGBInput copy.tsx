@@ -55,7 +55,6 @@ const RgbInput: React.FC = () => {
   return (
     <>
       <input
-        <span>
       />
     </>
   );
