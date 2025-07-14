@@ -1,5 +1,5 @@
 import './App.css'
-import InputColour from './components/InputColour'
+import InputColour from './components/colour_input/InputColour'
 
 function App() {
   return (

@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 
 //const isValidHex = (hex: string): boolean => /^#[0-9a-fA-F]{0-6}$/.test(hex);
 
@@ -26,29 +26,21 @@ const HexInput: React.FC = () => {
     setValue(formatted);
   };
 
-  useEffect(() => {
-    // Restore cursor position after render
-    if (inputRef.current && cursorPosRef.current !== null) {
-      inputRef.current.setSelectionRange(cursorPosRef.current, cursorPosRef.current);
-    }
-  }, [value]);
 
   return (
-    <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+    <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', fontSize: '1.5rem' }}>
       <input
         ref={inputRef}
         type="text"
         value={value}
         onChange={handleChange}
         onSelect={handleCursor}
-        placeholder="#rrggbb"
+        placeholder=""
         style={{
+          width: '140px',
+          padding: '0.6rem',
+          fontSize: '1.5rem',
           caretColor: 'transparent',
-          width: '120px',
-          padding: '10px',
-          fontSize: '16px',
-          fontFamily: 'monospace',
-          textTransform: 'lowercase',
         }}
       />
     </div>

@@ -1,7 +1,0 @@
-        <div className="card">
-           <label className='outline-white outline-1 pl-2 pt-1.5 pb-1.5'>
-                <span id="hex-input" className="hidden">#</span>
-                <input id='colour-input' type='search' placeholder={colourType} />
-            </label>
-            <button className='outline-gray-500 outline-1 w-8 h-8 rounded-full text-xl hover:bg-gray-500'>+</button>
-        </div>
