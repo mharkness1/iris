@@ -1,5 +1,6 @@
 import './App.css'
 import InputColour from './components/colour_input/InputColour'
+import RGBTest from './components/colour_input/RGBTest'
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
         </div>
       <h1>Iris</h1>
         <InputColour />
+        <RGBTest />
     </>
   )
 }

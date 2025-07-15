@@ -68,34 +68,37 @@ export default function InputColour() {
         case "hex":
             return (
                 <div>
-                    <form className="card">
+                    <div className="card">
                         <RandomButton />
                         { renderTypeInput }
                         <HexInput />
                         <AddButton />
-                    </form>
+                    </div>
                 </div>
             )
         case "hsl":
             return (
                 <div>
-                    <form className="card">
+                    <div className="card">
                         <RandomButton />
                         { renderTypeInput }
                         <HSLInput />
                         <AddButton />
-                    </form>
+                    </div>
                 </div>
             )
         case "rgb":
             return (
                 <div>
-                    <form className="card">
+                    <div className="card">
                         <RandomButton onClick={handleRGBClick} />
                         { renderTypeInput }
-                        <RgbInput values={rgbValues} onChange={setRgbValues} />
+                        <RgbInput onChange={(v) => {
+                            setRgbValues(v);
+                        }}
+                        values={rgbValues}/>
                         <AddButton />
-                    </form>
+                    </div>
                 </div>
             )
         default:
