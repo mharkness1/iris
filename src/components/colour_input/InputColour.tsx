@@ -59,10 +59,31 @@ export default function InputColour() {
     const { colourType, renderTypeInput } = useColourTypeInput();
     const [rgbValues, setRgbValues] = useState<[string, string, string]>(['', '', '']);
    
-    const handleRGBClick = () => {
+    const handleRandomRGBClick = () => {
         const newColour = getRandomRGB();
         setRgbValues(newColour);
     }
+
+    const handleRGBChange = (newValues: [string, string, string]) => {
+        setRgbValues(newValues)
+    }
+
+    const handleRGBBlur = (index: number, rawValue: string) => {
+    if (!/^\d{1,3}$/.test(rawValue)) {
+        rawValue = "000";
+    }
+
+    let num = parseInt(rawValue, 10);
+    if (isNaN(num)) num = 0;
+    if (num < 0) num = 0;
+    if (num > 255) num = 255;
+
+    const padded = num.toString().padStart(3, '0');
+
+    const updated = [...rgbValues] as [string, string, string];
+    updated[index] = padded;
+    setRgbValues(updated);
+    };
     
     switch (colourType) {
         case "hex":
@@ -91,12 +112,12 @@ export default function InputColour() {
             return (
                 <div>
                     <div className="card">
-                        <RandomButton onClick={handleRGBClick} />
+                        <RandomButton onClick={handleRandomRGBClick} />
                         { renderTypeInput }
-                        <RgbInput onChange={(v) => {
-                            setRgbValues(v);
-                        }}
-                        values={rgbValues}/>
+                        <RgbInput
+                        onChange={handleRGBChange}
+                        values={rgbValues}
+                        onBlurField={handleRGBBlur}/>
                         <AddButton />
                     </div>
                 </div>
