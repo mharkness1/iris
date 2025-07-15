@@ -1,6 +1,6 @@
 import { useState } from "react";
 import HexInput from "./HexInput";
-import HSLInput from "./HSLInput";
+import HslInput from "./HSLInput";
 import RgbInput from "./RGBInput";
 
 export type ColourFormat = "hex" | "rgb" | "hsl" | null
@@ -13,6 +13,15 @@ const getRandomRGB = (): [string, string, string] => {
         pad(Math.floor(Math.random() * 256)),
     ];
 };
+
+const getRandomHSL = (): [string, string, string] => {
+    const pad = (n: number) => n.toString().padStart(3, '0');
+    return [
+        pad(Math.floor(Math.random() * 361)),
+        pad(Math.floor(Math.random() * 101)),
+        pad(Math.floor(Math.random() * 101)),
+    ]
+}
 
 const useColourTypeInput = () => {
     const [colourType, setColourType] = useState<ColourFormat>("hex");
@@ -58,31 +67,62 @@ const RandomButton = ({ onClick }: { onClick?: () => void }) => {
 export default function InputColour() {
     const { colourType, renderTypeInput } = useColourTypeInput();
     const [rgbValues, setRgbValues] = useState<[string, string, string]>(['', '', '']);
-   
+    const [hslValues, setHslValues] = useState<[string, string, string]>(['','','']);
+
+    const handleHSLChange = (newValues: [string, string, string]) => {
+        setHslValues(newValues);
+    }
+
+    const handleHSLBlur = (index: number, rawValue: string) => {
+        if (!/^\d{1,3}$/.test(rawValue)) {
+            rawValue = "000";
+        }
+
+        let num = parseInt(rawValue, 10);
+        if (isNaN(num)) num = 0;
+        if (num < 0) num = 0;
+        if (index === 0) {
+            if (num > 360) num = 360;
+        } else {
+            if (num > 100) num = 100;
+        }
+
+        const padded = num.toString().padStart(3, '0');
+
+        const updated = [...hslValues] as [string, string, string];
+        updated[index] = padded;
+        setHslValues(updated);
+    }
+
     const handleRandomRGBClick = () => {
         const newColour = getRandomRGB();
         setRgbValues(newColour);
     }
 
+    const handleRandomHSLClick = () => {
+        const newColour = getRandomHSL();
+        setHslValues(newColour);
+    }
+
     const handleRGBChange = (newValues: [string, string, string]) => {
-        setRgbValues(newValues)
+        setRgbValues(newValues);
     }
 
     const handleRGBBlur = (index: number, rawValue: string) => {
-    if (!/^\d{1,3}$/.test(rawValue)) {
-        rawValue = "000";
-    }
+        if (!/^\d{1,3}$/.test(rawValue)) {
+            rawValue = "000";
+        }
 
-    let num = parseInt(rawValue, 10);
-    if (isNaN(num)) num = 0;
-    if (num < 0) num = 0;
-    if (num > 255) num = 255;
+        let num = parseInt(rawValue, 10);
+        if (isNaN(num)) num = 0;
+        if (num < 0) num = 0;
+        if (num > 255) num = 255;
 
-    const padded = num.toString().padStart(3, '0');
+        const padded = num.toString().padStart(3, '0');
 
-    const updated = [...rgbValues] as [string, string, string];
-    updated[index] = padded;
-    setRgbValues(updated);
+        const updated = [...rgbValues] as [string, string, string];
+        updated[index] = padded;
+        setRgbValues(updated);
     };
     
     switch (colourType) {
@@ -101,9 +141,12 @@ export default function InputColour() {
             return (
                 <div>
                     <div className="card">
-                        <RandomButton />
+                        <RandomButton onClick={handleRandomHSLClick}/>
                         { renderTypeInput }
-                        <HSLInput />
+                        <HslInput
+                        onChange={handleHSLChange}
+                        values={hslValues}
+                        onBlurField={handleHSLBlur}/>
                         <AddButton />
                     </div>
                 </div>

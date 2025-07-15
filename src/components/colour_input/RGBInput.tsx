@@ -52,6 +52,28 @@ const RgbInput: React.FC<Props> = ({ values, onChange, onBlurField }) => {
     }
   };
 
+  const handlePaste = (e: React.ClipboardEvent<HTMLInputElement>) => {
+  e.preventDefault();
+
+  const pasted = e.clipboardData.getData('text');
+    const parts = pasted
+      .trim()
+      .split(/[\s,]+/)
+      .map(p => p.replace(/[^\d]/g, '')) 
+      .map(p => p.slice(0, 3));
+
+    if (parts.length !== 3) return;
+
+    const formatted: [string, string, string] = [
+      parts[0] || '',
+      parts[1] || '',
+      parts[2] || '',
+    ];
+
+    onChange(formatted);
+    inputsRef[0].current?.focus();
+  };
+
   return (
     <div style={{ display: 'flex', gap: '1.5rem', fontSize: '1.5rem' }}>
       {values.map((value, index) => (
@@ -65,6 +87,7 @@ const RgbInput: React.FC<Props> = ({ values, onChange, onBlurField }) => {
             onChange={handleChange(index)}
             onBlur={handleBlur(index)}
             onKeyDown={handleKeyDown(index)}
+            onPaste={handlePaste}
             style={{
               width: '60px',
               padding: '0.6rem',

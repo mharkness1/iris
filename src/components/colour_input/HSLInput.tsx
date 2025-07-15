@@ -1,87 +1,103 @@
 import React, { useRef, useState } from 'react';
 
-type HSLValue = string;
+type Props = {
+  values: [string, string, string];
+  onChange: (values: [string, string, string]) => void;
+  onBlurField: (index: number, rawValue: string) => void;
+};
 
-const formats = ['h', 's', 'l']
+const formats = ['h', 's', 'l'];
 
-const padSL = (value: number): HSLValue => {
-  const clamped = Math.max(0, Math.min(100, value));
-  return clamped.toString().padStart(3, '0');
-}
-
-const padH = (value: number): HSLValue => {
-  const clamped = Math.max(0, Math.min(360, value));
-  return clamped.toString().padStart(3, '0');
-}
-
-const RgbInput: React.FC = () => {
-  const [values, setValues] = useState<HSLValue[]>(['','','']);
+const HslInput: React.FC<Props> = ({ values, onChange, onBlurField }) => {
   const [errors, setErrors] = useState<boolean[]>([false, false, false]);
-  const inputsRef = [useRef<HTMLInputElement>(null), useRef<HTMLInputElement>(null), useRef<HTMLInputElement>(null)];
+  const inputsRef = [
+    useRef<HTMLInputElement>(null),
+    useRef<HTMLInputElement>(null),
+    useRef<HTMLInputElement>(null),
+  ];
 
   const handleChange = (index: number) => (e: React.ChangeEvent<HTMLInputElement>) => {
     const raw = e.target.value;
-    if (!/^\d{0,3}$/.test(raw)) return; // limit to 3 digits per box
+    if (!/^\d{0,3}$/.test(raw)) return;
 
-    const num = Number(raw)
-    let isValid = false;
+    const num = Number(raw);
+    let isValid: boolean = false
     if (index === 0) {
       isValid = !isNaN(num) && num >= 0 && num <= 360;
     } else {
-      isValid = !isNaN(num) && num >= 0 && num <= 100;
+      isValid = !isNaN(num) && num >= 0 && num <= 100
     }
-  
-    const updatedValues = [...values];
-    updatedValues[index] = raw;
-    setValues(updatedValues);
+    
+    const updated = [...values] as [string, string, string];
+    updated[index] = raw;
+    onChange(updated);
 
     const updatedErrors = [...errors];
     updatedErrors[index] = !isValid && raw !== '';
     setErrors(updatedErrors);
 
-    if (raw.length == 3 && isValid && index < 2) {
+    if (raw.length === 3 && isValid && index < 2) {
       inputsRef[index + 1].current?.focus();
+      inputsRef[index + 1].current?.setSelectionRange(0, 0);
     }
   };
 
-  const handleBlur = (index: number) => () => {
-    const raw = values[index];
-    const num = Number(raw);
-    let padded: string = ''
-    if (index === 0) {
-      padded = isNaN(num) ? '000' : padH(num);
-    } else {
-      padded = isNaN(num) ? '000' : padSL(num);
-    }
-    
-    const updatedValues = [...values];
-    updatedValues[index] = padded;
-    setValues(updatedValues);
+  const handleBlur = (index: number) => (e: React.FocusEvent<HTMLInputElement>) => {
+    onBlurField(index, e.target.value);
   };
+
 
   const handleKeyDown = (index: number) => (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Backspace' && values[index] === '' && index > 0) {
-      inputsRef[index - 1].current?.focus();
+    if (e.key === 'Backspace' && e.currentTarget.selectionStart === 0 && index > 0) {
+      e.preventDefault();
+      setTimeout(() => {
+        inputsRef[index - 1].current?.focus();
+        inputsRef[index - 1].current?.setSelectionRange(3, 3);
+      }, 0);
     }
+  };
+
+  const handlePaste = (e: React.ClipboardEvent<HTMLInputElement>) => {
+  e.preventDefault();
+
+  const pasted = e.clipboardData.getData('text');
+    const parts = pasted
+      .trim()
+      .split(/[\s,]+/)
+      .map(p => p.replace(/[^\d]/g, '')) 
+      .map(p => p.slice(0, 3));
+
+    if (parts.length !== 3) return;
+
+    const formatted: [string, string, string] = [
+      parts[0] || '',
+      parts[1] || '',
+      parts[2] || '',
+    ];
+
+    onChange(formatted);
+    inputsRef[0].current?.focus();
   };
 
   return (
-    <div style={{ display: 'flex', gap: '1.5rem', fontSize: '1.5rem'}}>
+    <div style={{ display: 'flex', gap: '1.5rem', fontSize: '1.5rem' }}>
       {values.map((value, index) => (
         <div key={index}>
           {formats[index]} (
           <input
-          placeholder='000'
-          type='text'
-          value={value}
-          onChange={handleChange(index)}
-          onBlur={handleBlur(index)}
-          onKeyDown={handleKeyDown(index)}
-          style={{
-            width: '60px',
-            padding: '0.6rem',
-            fontSize: '1.5rem',
-          }}
+            ref={inputsRef[index]}
+            placeholder="000"
+            type="text"
+            value={value}
+            onChange={handleChange(index)}
+            onBlur={handleBlur(index)}
+            onKeyDown={handleKeyDown(index)}
+            onPaste={handlePaste}
+            style={{
+              width: '60px',
+              padding: '0.6rem',
+              fontSize: '1.5rem',
+            }}
           />
           )
         </div>
@@ -90,4 +106,4 @@ const RgbInput: React.FC = () => {
   );
 };
 
-export default RgbInput;
+export default HslInput;
