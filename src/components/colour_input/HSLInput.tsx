@@ -6,7 +6,7 @@ type Props = {
   onBlurField: (index: number, rawValue: string) => void;
 };
 
-const formats = ['h', 's', 'l'];
+//const formats = ['h', 's', 'l'];
 
 const HslInput: React.FC<Props> = ({ values, onChange, onBlurField }) => {
   const [errors, setErrors] = useState<boolean[]>([false, false, false]);
@@ -80,10 +80,10 @@ const HslInput: React.FC<Props> = ({ values, onChange, onBlurField }) => {
   };
 
   return (
-    <div style={{ display: 'flex', gap: '1.5rem', fontSize: '1.5rem' }}>
+  <div style={{ display: 'flex', gap: '1rem', fontSize: '1.5rem' }}>
+      <span>(</span>
       {values.map((value, index) => (
-        <div key={index}>
-          {formats[index]} (
+        <div key={index} style={{display: 'flex', alignItems: 'center'}}>
           <input
             ref={inputsRef[index]}
             placeholder="000"
@@ -94,14 +94,15 @@ const HslInput: React.FC<Props> = ({ values, onChange, onBlurField }) => {
             onKeyDown={handleKeyDown(index)}
             onPaste={handlePaste}
             style={{
-              width: '60px',
-              padding: '0.6rem',
+              width: '40px',
               fontSize: '1.5rem',
             }}
           />
-          )
+        { index > 0 && <span>%</span>}
+        {index < 2 && <span>,</span>}
         </div>
       ))}
+      <span>)</span>
     </div>
   );
 };
