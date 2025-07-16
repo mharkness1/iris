@@ -1,4 +1,5 @@
 import React, { useRef, useState } from 'react';
+import { formatHSLValues } from './Formatters';
 
 type Props = {
   values: [string, string, string];
@@ -70,11 +71,14 @@ const HslInput: React.FC<Props> = ({ values, onChange, onBlurField }) => {
     if (parts.length !== 3) return;
 
     const formatted: [string, string, string] = [
-      parts[0] || '',
-      parts[1] || '',
-      parts[2] || '',
+      formatHSLValues(0, parts[0] || ''),
+      formatHSLValues(1, parts[1] || ''),
+      formatHSLValues(2, parts[2] || ''),
     ];
 
+    formatted.forEach((val, i) => {
+      onBlurField?.(i, val);
+    });
     onChange(formatted);
     inputsRef[0].current?.focus();
   };
@@ -98,7 +102,8 @@ const HslInput: React.FC<Props> = ({ values, onChange, onBlurField }) => {
               fontSize: '1.5rem',
             }}
           />
-        { index > 0 && <span>%</span>}
+        {index === 0 && <span>°</span>}
+        {index > 0 && <span>%</span>}
         {index < 2 && <span>,</span>}
         </div>
       ))}

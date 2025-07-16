@@ -1,4 +1,5 @@
 import React, { useRef, useState } from 'react';
+import { formatRGBValues } from './Formatters';
 
 type Props = {
   values: [string, string, string];
@@ -65,9 +66,9 @@ const RgbInput: React.FC<Props> = ({ values, onChange, onBlurField }) => {
     if (parts.length !== 3) return;
 
     const formatted: [string, string, string] = [
-      parts[0] || '',
-      parts[1] || '',
-      parts[2] || '',
+      formatRGBValues(parts[0] || ''),
+      formatRGBValues(parts[1] || ''),
+      formatRGBValues(parts[2] || ''),
     ];
 
     onChange(formatted);

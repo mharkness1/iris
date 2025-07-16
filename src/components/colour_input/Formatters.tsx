@@ -1,0 +1,29 @@
+export function formatHSLValues(index: number, rawValue: string): string {
+    if (!/^\d{1,3}$/.test(rawValue)) {
+        rawValue = "000";
+    }
+
+    let num = parseInt(rawValue, 10);
+    if (isNaN(num)) num = 0;
+    if (num < 0) num = 0;
+    if (index === 0) {
+        if (num > 360) num = 360;
+    } else {
+        if (num > 100) num = 100;
+    }
+
+    return num.toString().padStart(3, '0');
+};
+
+export function formatRGBValues(rawValue: string): string {
+    if (!/^\d{1,3}$/.test(rawValue)) {
+        rawValue = "000";
+    }
+
+    let num = parseInt(rawValue, 10);
+    if (isNaN(num)) num = 0;
+    if (num < 0) num = 0;
+    if (num > 255) num = 255;
+
+    return num.toString().padStart(3, '0');
+};

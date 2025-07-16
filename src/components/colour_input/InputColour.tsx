@@ -2,6 +2,7 @@ import { useState } from "react";
 import HexInput from "./HexInput";
 import HslInput from "./HSLInput";
 import RgbInput from "./RGBInput";
+import { formatHSLValues, formatRGBValues } from "./Formatters";
 
 export type ColourFormat = "hex" | "rgb" | "hsl" | null
 
@@ -74,21 +75,7 @@ export default function InputColour() {
     }
 
     const handleHSLBlur = (index: number, rawValue: string) => {
-        if (!/^\d{1,3}$/.test(rawValue)) {
-            rawValue = "000";
-        }
-
-        let num = parseInt(rawValue, 10);
-        if (isNaN(num)) num = 0;
-        if (num < 0) num = 0;
-        if (index === 0) {
-            if (num > 360) num = 360;
-        } else {
-            if (num > 100) num = 100;
-        }
-
-        const padded = num.toString().padStart(3, '0');
-
+        const padded = formatHSLValues(index, rawValue);
         const updated = [...hslValues] as [string, string, string];
         updated[index] = padded;
         setHslValues(updated);
@@ -109,17 +96,7 @@ export default function InputColour() {
     }
 
     const handleRGBBlur = (index: number, rawValue: string) => {
-        if (!/^\d{1,3}$/.test(rawValue)) {
-            rawValue = "000";
-        }
-
-        let num = parseInt(rawValue, 10);
-        if (isNaN(num)) num = 0;
-        if (num < 0) num = 0;
-        if (num > 255) num = 255;
-
-        const padded = num.toString().padStart(3, '0');
-
+        const padded = formatRGBValues(rawValue);
         const updated = [...rgbValues] as [string, string, string];
         updated[index] = padded;
         setRgbValues(updated);
