@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { formatHSLValues } from './Formatters';
+import { formatHSLValues } from './Helpers';
 
 type Props = {
   values: [string, string, string];

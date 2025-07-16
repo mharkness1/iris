@@ -27,3 +27,21 @@ export function formatRGBValues(rawValue: string): string {
 
     return num.toString().padStart(3, '0');
 };
+
+export function getRandomRGB(): [string, string, string] {
+    const pad = (n: number) => n.toString().padStart(3, '0');
+    return [
+        pad(Math.floor(Math.random() * 256)),
+        pad(Math.floor(Math.random() * 256)),
+        pad(Math.floor(Math.random() * 256)),
+    ];
+};
+
+export function getRandomHSL(): [string, string, string] {
+    const pad = (n: number) => n.toString().padStart(3, '0');
+    return [
+        pad(Math.floor(Math.random() * 361)),
+        pad(Math.floor(Math.random() * 101)),
+        pad(Math.floor(Math.random() * 101)),
+    ]
+}

@@ -2,27 +2,9 @@ import { useState } from "react";
 import HexInput from "./HexInput";
 import HslInput from "./HSLInput";
 import RgbInput from "./RGBInput";
-import { formatHSLValues, formatRGBValues } from "./Formatters";
+import { formatHSLValues, formatRGBValues, getRandomHSL, getRandomRGB } from "./Helpers";
 
 export type ColourFormat = "hex" | "rgb" | "hsl" | null
-
-const getRandomRGB = (): [string, string, string] => {
-    const pad = (n: number) => n.toString().padStart(3, '0');
-    return [
-        pad(Math.floor(Math.random() * 256)),
-        pad(Math.floor(Math.random() * 256)),
-        pad(Math.floor(Math.random() * 256)),
-    ];
-};
-
-const getRandomHSL = (): [string, string, string] => {
-    const pad = (n: number) => n.toString().padStart(3, '0');
-    return [
-        pad(Math.floor(Math.random() * 361)),
-        pad(Math.floor(Math.random() * 101)),
-        pad(Math.floor(Math.random() * 101)),
-    ]
-}
 
 const useColourTypeInput = () => {
     const [colourType, setColourType] = useState<ColourFormat>("hex");
