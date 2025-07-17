@@ -1,46 +1,47 @@
-import React, { useState, useRef } from 'react';
+import React, { useRef } from 'react';
+import { formatHex } from './Helpers';
 
-//const isValidHex = (hex: string): boolean => /^#[0-9a-fA-F]{0-6}$/.test(hex);
 
-const formatHex = (input: string) => {
-  let hex = input.replace(/[^0-9a-fA-F]/g, '');
-  if (hex.length > 6) hex = hex.slice(0, 6);
-  return '#' + hex.toLowerCase();
+type Props = {
+  values: string;
+  onChange: (values: string) => void;
 }
 
-const HexInput: React.FC = () => {
-  const [value, setValue] = useState<string>('#');
+const HexInput: React.FC<Props> = ( { values, onChange } ) => {
   const inputRef = useRef<HTMLInputElement>(null);
-  const cursorPosRef = useRef<number>(0);
-
-  // Save cursor position before update
-  const handleCursor = (e: React.ChangeEvent<HTMLInputElement>) => {
-    cursorPosRef.current = e.target.selectionStart ?? 0;
-  };
-
+  
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    handleCursor(e);
+    const raw = e.target.value;
+    console.log("User typed:", raw);
+    if (!/^[0-9a-fA-F]{0-6}$/.test(raw)) return;
+    const formatted = formatHex(raw);
+    console.log("Formatted hex:", formatted);
+    onChange(formatted)
+    };
 
-    const formatted = formatHex(e.target.value);
-
-    setValue(formatted);
-  };
-
+    const handlePaste =(e: React.ClipboardEvent<HTMLInputElement>) => {
+      e.preventDefault();
+      const pasted = e.clipboardData.getData('text');
+      const cleaned = pasted.trim().replace(/[^0-9a-fA-F]/g, '').slice(0, 6);
+      if (cleaned.length === 0) return;
+      const formatted = formatHex(cleaned);
+      onChange(formatted);
+   }
 
   return (
-    <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', fontSize: '1.5rem' }}>
+    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', fontSize: '1.5rem' }}>
+      <span>#</span>
       <input
         ref={inputRef}
         type="text"
-        value={value}
+        value={values}
         onChange={handleChange}
-        onSelect={handleCursor}
+        onPaste={handlePaste}
         placeholder=""
         style={{
           width: '140px',
           padding: '0.6rem',
           fontSize: '1.5rem',
-          caretColor: 'transparent',
         }}
       />
     </div>

@@ -2,7 +2,7 @@ import { useState } from "react";
 import HexInput from "./HexInput";
 import HslInput from "./HSLInput";
 import RgbInput from "./RGBInput";
-import { formatHSLValues, formatRGBValues, getRandomHSL, getRandomRGB } from "./Helpers";
+import { formatHSLValues, formatRGBValues, getRandomHSL, getRandomRGB, getRandomHex } from "./Helpers";
 
 export type ColourFormat = "hex" | "rgb" | "hsl" | null
 
@@ -51,6 +51,7 @@ export default function InputColour() {
     const { colourType, renderTypeInput } = useColourTypeInput();
     const [rgbValues, setRgbValues] = useState<[string, string, string]>(['', '', '']);
     const [hslValues, setHslValues] = useState<[string, string, string]>(['','','']);
+    const [hexValues, setHexValues] = useState<string>('');
 
     const handleHSLChange = (newValues: [string, string, string]) => {
         setHslValues(newValues);
@@ -63,6 +64,11 @@ export default function InputColour() {
         setHslValues(updated);
     }
 
+    const handleRandomHexClick = () => {
+        const newColour = getRandomHex();
+        setHexValues(newColour);
+    }
+
     const handleRandomRGBClick = () => {
         const newColour = getRandomRGB();
         setRgbValues(newColour);
@@ -71,6 +77,11 @@ export default function InputColour() {
     const handleRandomHSLClick = () => {
         const newColour = getRandomHSL();
         setHslValues(newColour);
+    }
+
+    const handleHexChange = (newValue: string) => {
+        console.log("Updating hex state to", newValue);
+        setHexValues(newValue);
     }
 
     const handleRGBChange = (newValues: [string, string, string]) => {
@@ -89,9 +100,12 @@ export default function InputColour() {
             return (
                 <div>
                     <div className="card">
-                        <RandomButton />
+                        <RandomButton onClick={handleRandomHexClick}/>
                         { renderTypeInput }
-                        <HexInput />
+                        <HexInput
+                        onChange={handleHexChange}
+                        values={hexValues}
+                        />
                         <AddButton />
                     </div>
                 </div>
