@@ -1,14 +1,14 @@
-import { useState } from 'react'
-import './App.css'
-import InputColour from './components/input/input_main'
-import Sidebar from './components/swatch/swatch'
+import React from "react";
+import Sidebar from "../swatch/swatch";
+import InputColour from "../input/input_main";
 
-function App() {
-  const [isSidebarOpen, setSidebarOpen] = useState(false);
-  const handleSidebar = () => {
-    setSidebarOpen(!isSidebarOpen);
-  };
+type Props = {
+    isSidebarOpen: boolean,
+    handleSidebar: () => void;
+}
 
+const Empty: React.FC<Props> = ({ isSidebarOpen, handleSidebar }) => {
+ 
   return (
     <div className='whole-page'>
           <div>
@@ -50,4 +50,4 @@ function App() {
   )
 }
 
-export default App
+export default Empty;

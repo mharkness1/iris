@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { formatHex } from './Helpers';
+import { formatHex } from './helpers';
 
 
 type Props = {

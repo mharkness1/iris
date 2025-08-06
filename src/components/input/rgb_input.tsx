@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { formatRGBValues } from './Helpers';
+import { formatRGBValues } from './helpers';
 
 type Props = {
   values: [string, string, string];

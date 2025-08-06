@@ -1,8 +1,8 @@
 import { useState } from "react";
-import HexInput from "./HexInput";
-import HslInput from "./HSLInput";
-import RgbInput from "./RGBInput";
-import { formatHSLValues, formatRGBValues, getRandomHSL, getRandomRGB, getRandomHex } from "./Helpers";
+import HexInput from "./hex_input";
+import HslInput from "./hsl_input";
+import RgbInput from "./rgb_input";
+import { formatHSLValues, formatRGBValues, getRandomHSL, getRandomRGB, getRandomHex } from "./helpers";
 
 export type ColourFormat = "hex" | "rgb" | "hsl" | null
 
