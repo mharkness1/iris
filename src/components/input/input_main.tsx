@@ -6,7 +6,7 @@ import { formatHSLValues, formatRGBValues, getRandomHSL, getRandomRGB, getRandom
 import { ColourContext, type ColourContextType } from "../../context/colourContext";
 import { createColour, InputParser, type ColourModes } from "iris-colour";
 
-export type ColourFormat = "hex" | "rgb" | "hsl"
+type ColourFormat = "hex" | "rgb" | "hsl"
 
 const useColourTypeInput = () => {
     const [colourType, setColourType] = useState<ColourFormat>("hex");
@@ -49,13 +49,17 @@ const RandomButton = ({ onClick }: { onClick?: () => void }) => {
     )
 }
 
-export default function InputColour() {
+type Props = {
+    handleSidebar: () => void;
+}
+
+const InputColour: React.FC<Props> = ({ handleSidebar }) => {
     const { colourType, renderTypeInput } = useColourTypeInput();
     const [rgbValues, setRgbValues] = useState<[string, string, string]>(['', '', '']);
     const [hslValues, setHslValues] = useState<[string, string, string]>(['','','']);
     const [hexValues, setHexValues] = useState<string>('');
     const colContext = useContext(ColourContext)
-    const { colours, saveColour } = colContext as ColourContextType
+    const { saveColour } = colContext as ColourContextType
 
     const handleHSLChange = (newValues: [string, string, string]) => {
         setHslValues(newValues);
@@ -101,10 +105,10 @@ export default function InputColour() {
     
     const afterSubmission = (e: any) => {
         e.preventDefault();
-        console.log(colourType)
-        let colInput = e.target[0].value;
-        saveColour(createColour(InputParser(colInput, colourType as string) as ColourModes))
-        console.log(colourType, colours)
+        let colInput = e.target[2].value;
+        let col = createColour(InputParser(colInput, colourType as string) as ColourModes);
+        saveColour(col);
+        handleSidebar();
     }
 
     switch (colourType) {
@@ -152,5 +156,7 @@ export default function InputColour() {
             )
         default:
             return null
+        }
 }
-  }
+
+export default InputColour

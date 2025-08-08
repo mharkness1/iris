@@ -1,9 +1,11 @@
 import React from "react";
 import InputColour from "../input/input_main";
 
+type Props = {
+  handleSidebar: () => void;
+}
 
-
-const Empty: React.FC = () => {
+const Empty: React.FC<Props> = ({handleSidebar}) => {
  
   return (
     <div className='main-section'>
@@ -34,7 +36,7 @@ const Empty: React.FC = () => {
       <h1>iris</h1>
         <p>This is a colour language generator. The point is not to produce specific palettes of particular colours.</p>
         <p>But instead to specify <i>hyper-parameters</i> that generate the palettes you want from any colour. So... add a colour, any colour...</p> 
-        <InputColour />
+        <InputColour handleSidebar={handleSidebar}/>
         <p>Click the info icon above for more details.</p>
     </div>
   )

@@ -9,8 +9,9 @@ export function dataToQueryString(data: Map<string, number>): string {
     });
     return '?' + encoded.join('&');
 }
-
+/*
 export function getHyperParams(): Map<string, number> {
-    let hyperParams: Map<string, number>
+    let hyperParams: Map<string, number> =
     return hyperParams
 }
+*/
