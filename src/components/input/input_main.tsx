@@ -6,7 +6,7 @@ import { formatHSLValues, formatRGBValues, getRandomHSL, getRandomRGB, getRandom
 import { ColourContext, type ColourContextType } from "../../context/colourContext";
 import { createColour, InputParser, type ColourModes } from "iris-colour";
 
-export type ColourFormat = "hex" | "rgb" | "hsl" | null
+export type ColourFormat = "hex" | "rgb" | "hsl"
 
 const useColourTypeInput = () => {
     const [colourType, setColourType] = useState<ColourFormat>("hex");
@@ -101,6 +101,7 @@ export default function InputColour() {
     
     const afterSubmission = (e: any) => {
         e.preventDefault();
+        console.log(colourType)
         let colInput = e.target[0].value;
         saveColour(createColour(InputParser(colInput, colourType as string) as ColourModes))
         console.log(colourType, colours)
