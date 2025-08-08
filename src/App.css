@@ -1,12 +1,12 @@
 #root {
-  max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
+  height: 100vh;
 }
 
 .whole-page {
   display: flex;
   flex-direction: row;
+  align-items: center;
 }
 
 .main-section {
@@ -14,15 +14,7 @@
   flex-direction: column;
   text-align: center;
   align-items: center;
-}
-
-.main-section-open {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  align-items: center;
-  width: 75vw;
-  transition: right 0.3s ease-in-out;
+  width: 100%
 }
 
 .rainbow-box {

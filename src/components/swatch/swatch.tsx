@@ -1,18 +1,10 @@
-import React from "react";
 import "./sidebar.css"
 
-type Props = {
-    isSidebarOpen: boolean,
-}
-
-const Sidebar: React.FC<Props> = ({ isSidebarOpen }) => {
-    const sidebarClass = isSidebarOpen ? "sidebar open" : "sidebar";
+const Sidebar: React.FC = () => {
     return (
-        <>
-            <div className={sidebarClass}>
+            <div className="sidebar">
                 <div> This should toggle. </div>
             </div>
-        </>
     );
 }
 

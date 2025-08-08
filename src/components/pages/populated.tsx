@@ -1,17 +1,10 @@
-/*
-<div>
-    <button onClick={handleSidebar}>Toggle</button>
-    <Sidebar isSidebarOpen={isSidebarOpen}/>
-</div>
-*/
-
-type Props = {
-    isSidebarOpen: boolean,
-    handleSidebar: () => void;
-}
-
-const Populated: React.FC<Props> = ({ isSidebarOpen, handleSidebar }) => {
-  return ()
+const Populated: React.FC = () => {
+  
+    return (
+        <div className="main-section">
+        
+        </div>
+  )
 };
 
 export default Populated;

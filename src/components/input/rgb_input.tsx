@@ -7,8 +7,6 @@ type Props = {
   onBlurField: (index: number, rawValue: string) => void;
 };
 
-//const formats = ['r', 'g', 'b'];
-
 const RgbInput: React.FC<Props> = ({ values, onChange, onBlurField }) => {
   const [errors, setErrors] = useState<boolean[]>([false, false, false]);
   const inputsRef = [

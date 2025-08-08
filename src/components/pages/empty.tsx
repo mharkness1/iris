@@ -1,21 +1,12 @@
 import React from "react";
-import Sidebar from "../swatch/swatch";
 import InputColour from "../input/input_main";
 
-type Props = {
-    isSidebarOpen: boolean,
-    handleSidebar: () => void;
-}
 
-const Empty: React.FC<Props> = ({ isSidebarOpen, handleSidebar }) => {
+
+const Empty: React.FC = () => {
  
   return (
-    <div className='whole-page'>
-          <div>
-            <button onClick={handleSidebar}>Toggle</button>
-            <Sidebar isSidebarOpen={isSidebarOpen}/>
-          </div>
-          <div className={isSidebarOpen ? "main-section-open" : "main-section"}>
+    <div className='main-section'>
           <svg width="100%" height="100%" viewBox="0 0 988 962" className='rainbow-box' stroke='currentColor' fill='currentColor'>
             <g transform="matrix(1,0,0,1,-149.014,-1310.86)">
               <g transform="matrix(5.253,0,0,5.253,-3977.93,-767.176)">
@@ -41,11 +32,10 @@ const Empty: React.FC<Props> = ({ isSidebarOpen, handleSidebar }) => {
             </g>
           </svg>
       <h1>iris</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ornare, nibh eget dapibus pulvinar, ligula ante cursus nunc, non pretium leo tellus vitae nibh. 
-          Mauris malesuada fermentum tellus, et dictum mauris. Curabitur tristique nisi viverra velit tincidunt ultrices.</p> 
+        <p>This is a colour language generator. The point is not to produce specific palettes of particular colours.</p>
+        <p>But instead to specify <i>hyper-parameters</i> that generate the palettes you want from any colour. So... add a colour, any colour...</p> 
         <InputColour />
-        <p>Sed vehicula euismod purus quis suscipit. Donec vitae gravida elit. Vivamus leo ipsum, hendrerit non nisi quis, lacinia pellentesque lorem.</p>
-    </div>
+        <p>Click the info icon above for more details.</p>
     </div>
   )
 }

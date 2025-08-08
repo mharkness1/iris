@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import HexInput from "./hex_input";
 import HslInput from "./hsl_input";
 import RgbInput from "./rgb_input";
 import { formatHSLValues, formatRGBValues, getRandomHSL, getRandomRGB, getRandomHex } from "./helpers";
+import { ColourContext, type ColourContextType } from "../../context/colourContext";
+import { createColour, InputParser, type ColourModes } from "iris-colour";
 
 export type ColourFormat = "hex" | "rgb" | "hsl" | null
 
@@ -28,8 +30,8 @@ const useColourTypeInput = () => {
 
 const AddButton = () => {
     return (
-        <button type="button" id="button_add">
-            <svg className="w-10 h-10 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+        <button type="submit" id="button_add">
+            <svg className="w-10 h-10 text-gray-800 dark:text-white dark:hover:fill-white dark:hover:text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M12 7.757v8.486M7.757 12h8.486M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
             </svg>
         </button>
@@ -52,6 +54,8 @@ export default function InputColour() {
     const [rgbValues, setRgbValues] = useState<[string, string, string]>(['', '', '']);
     const [hslValues, setHslValues] = useState<[string, string, string]>(['','','']);
     const [hexValues, setHexValues] = useState<string>('');
+    const colContext = useContext(ColourContext)
+    const { colours, saveColour } = colContext as ColourContextType
 
     const handleHSLChange = (newValues: [string, string, string]) => {
         setHslValues(newValues);
@@ -95,11 +99,18 @@ export default function InputColour() {
         setRgbValues(updated);
     };
     
+    const afterSubmission = (e: any) => {
+        e.preventDefault();
+        let colInput = e.target[0].value;
+        saveColour(createColour(InputParser(colInput, colourType as string) as ColourModes))
+        console.log(colourType, colours)
+    }
+
     switch (colourType) {
         case "hex":
             return (
                 <div>
-                    <div className="card">
+                    <form className="card" onSubmit={afterSubmission}>
                         <RandomButton onClick={handleRandomHexClick}/>
                         { renderTypeInput }
                         <HexInput
@@ -107,13 +118,13 @@ export default function InputColour() {
                         values={hexValues}
                         />
                         <AddButton />
-                    </div>
+                    </form>
                 </div>
             )
         case "hsl":
             return (
                 <div>
-                    <div className="card">
+                    <form className="card">
                         <RandomButton onClick={handleRandomHSLClick}/>
                         { renderTypeInput }
                         <HslInput
@@ -121,12 +132,12 @@ export default function InputColour() {
                         values={hslValues}
                         onBlurField={handleHSLBlur}/>
                         <AddButton />
-                    </div>
+                    </form>
                 </div>
             )
         case "rgb":
             return (
-                <div>
+                <form>
                     <div className="card">
                         <RandomButton onClick={handleRandomRGBClick} />
                         { renderTypeInput }
@@ -136,7 +147,7 @@ export default function InputColour() {
                         onBlurField={handleRGBBlur}/>
                         <AddButton />
                     </div>
-                </div>
+                </form>
             )
         default:
             return null
