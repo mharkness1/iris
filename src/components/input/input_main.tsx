@@ -109,6 +109,7 @@ const InputColour: React.FC<Props> = ({ handleSidebar }) => {
         let col = createColour(InputParser(colInput, colourType as string) as ColourModes);
         saveColour(col);
         handleSidebar();
+        console.log(colContext?.colours?.length)
     }
 
     switch (colourType) {
