@@ -4,4 +4,6 @@
     width: 20vw;
     transition: left 0.3s ease-in-out;
     background-color: gray;
+    display: flex;
+    flex-direction: column;
 }
