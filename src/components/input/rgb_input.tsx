@@ -5,9 +5,19 @@ type Props = {
   values: [string, string, string];
   onChange: (values: [string, string, string]) => void;
   onBlurField: (index: number, rawValue: string) => void;
+  containerStyle?: React.CSSProperties;
+  inputWrapperStyle?: React.CSSProperties;
+  inputStyle?: React.CSSProperties;
 };
 
-const RgbInput: React.FC<Props> = ({ values, onChange, onBlurField }) => {
+const RgbInput: React.FC<Props> = ({
+  values,
+  onChange,
+  onBlurField,
+  containerStyle = { display: 'flex', gap: '1rem', fontSize: '1.5rem' },
+  inputWrapperStyle = { display: 'flex', alignItems: 'center' },
+  inputStyle = { width: '40px', fontSize: '1.5rem' },
+}) => {
   const [errors, setErrors] = useState<boolean[]>([false, false, false]);
   const inputsRef = [
     useRef<HTMLInputElement>(null),
@@ -40,7 +50,6 @@ const RgbInput: React.FC<Props> = ({ values, onChange, onBlurField }) => {
     onBlurField(index, e.target.value);
   };
 
-
   const handleKeyDown = (index: number) => (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Backspace' && e.currentTarget.selectionStart === 0 && index > 0) {
       e.preventDefault();
@@ -52,14 +61,14 @@ const RgbInput: React.FC<Props> = ({ values, onChange, onBlurField }) => {
   };
 
   const handlePaste = (e: React.ClipboardEvent<HTMLInputElement>) => {
-  e.preventDefault();
+    e.preventDefault();
 
-  const pasted = e.clipboardData.getData('text');
+    const pasted = e.clipboardData.getData('text');
     const parts = pasted
       .trim()
       .split(/[\s,]+/)
-      .map(p => p.replace(/[^\d]/g, '')) 
-      .map(p => p.slice(0, 3));
+      .map((p) => p.replace(/[^\d]/g, ''))
+      .map((p) => p.slice(0, 3));
 
     if (parts.length !== 3) return;
 
@@ -74,10 +83,10 @@ const RgbInput: React.FC<Props> = ({ values, onChange, onBlurField }) => {
   };
 
   return (
-    <div style={{ display: 'flex', gap: '1rem', fontSize: '1.5rem' }}>
+    <div style={containerStyle}>
       <span>(</span>
       {values.map((value, index) => (
-        <div key={index} style={{display: 'flex', alignItems: 'center'}}>
+        <div key={index} style={inputWrapperStyle}>
           <input
             ref={inputsRef[index]}
             placeholder="000"
@@ -87,12 +96,9 @@ const RgbInput: React.FC<Props> = ({ values, onChange, onBlurField }) => {
             onBlur={handleBlur(index)}
             onKeyDown={handleKeyDown(index)}
             onPaste={handlePaste}
-            style={{
-              width: '40px',
-              fontSize: '1.5rem',
-            }}
+            style={inputStyle}
           />
-        {index < 2 && <span>,</span>}
+          {index < 2 && <span>,</span>}
         </div>
       ))}
       <span>)</span>

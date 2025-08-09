@@ -6,7 +6,7 @@ import { formatHSLValues, formatRGBValues, getRandomHSL, getRandomRGB, getRandom
 import { ColourContext, type ColourContextType } from "../../context/colourContext";
 import { createColour, InputParser, type ColourModes } from "iris-colour";
 
-type ColourFormat = "hex" | "rgb" | "hsl"
+export type ColourFormat = "hex" | "rgb" | "hsl"
 
 const useColourTypeInput = () => {
     const [colourType, setColourType] = useState<ColourFormat>("hex");
@@ -19,7 +19,7 @@ const useColourTypeInput = () => {
     return {
     colourType: colourType,
     renderTypeInput:(
-        <select className="pl-1 pb-1.5 pt-1.5 text-2xl" name="selectedFormat" onChange={onOptionChange} defaultValue="hex">
+        <select className="pl-1 pb-1.5 pt-1.5 text-2xl" name="selectedFormat" onChange={onOptionChange} >
             <option value="hex">hex</option>
             <option value="rgb">rgb</option>
             <option value="hsl">hsl</option>
@@ -142,8 +142,8 @@ const InputColour: React.FC<Props> = ({ handleSidebar }) => {
             )
         case "rgb":
             return (
-                <form>
-                    <div className="card">
+                <div>
+                    <form className="card">
                         <RandomButton onClick={handleRandomRGBClick} />
                         { renderTypeInput }
                         <RgbInput
@@ -151,8 +151,8 @@ const InputColour: React.FC<Props> = ({ handleSidebar }) => {
                         values={rgbValues}
                         onBlurField={handleRGBBlur}/>
                         <AddButton />
-                    </div>
-                </form>
+                    </form>
+                </div>
             )
         default:
             return null

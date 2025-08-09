@@ -5,11 +5,19 @@ type Props = {
   values: [string, string, string];
   onChange: (values: [string, string, string]) => void;
   onBlurField: (index: number, rawValue: string) => void;
+  containerStyle?: React.CSSProperties;
+  inputWrapperStyle?: React.CSSProperties;
+  inputStyle?: React.CSSProperties;
 };
 
-//const formats = ['h', 's', 'l'];
-
-const HslInput: React.FC<Props> = ({ values, onChange, onBlurField }) => {
+const HslInput: React.FC<Props> = ({
+  values,
+  onChange,
+  onBlurField,
+  containerStyle = { display: 'flex', gap: '1rem', fontSize: '1.5rem' },
+  inputWrapperStyle = { display: 'flex', alignItems: 'center' },
+  inputStyle = { width: '40px', fontSize: '1.5rem' },
+}) => {
   const [errors, setErrors] = useState<boolean[]>([false, false, false]);
   const inputsRef = [
     useRef<HTMLInputElement>(null),
@@ -22,13 +30,13 @@ const HslInput: React.FC<Props> = ({ values, onChange, onBlurField }) => {
     if (!/^\d{0,3}$/.test(raw)) return;
 
     const num = Number(raw);
-    let isValid: boolean = false
+    let isValid = false;
     if (index === 0) {
       isValid = !isNaN(num) && num >= 0 && num <= 360;
     } else {
-      isValid = !isNaN(num) && num >= 0 && num <= 100
+      isValid = !isNaN(num) && num >= 0 && num <= 100;
     }
-    
+
     const updated = [...values] as [string, string, string];
     updated[index] = raw;
     onChange(updated);
@@ -47,7 +55,6 @@ const HslInput: React.FC<Props> = ({ values, onChange, onBlurField }) => {
     onBlurField(index, e.target.value);
   };
 
-
   const handleKeyDown = (index: number) => (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Backspace' && e.currentTarget.selectionStart === 0 && index > 0) {
       e.preventDefault();
@@ -59,14 +66,14 @@ const HslInput: React.FC<Props> = ({ values, onChange, onBlurField }) => {
   };
 
   const handlePaste = (e: React.ClipboardEvent<HTMLInputElement>) => {
-  e.preventDefault();
+    e.preventDefault();
 
-  const pasted = e.clipboardData.getData('text');
+    const pasted = e.clipboardData.getData('text');
     const parts = pasted
       .trim()
       .split(/[\s,]+/)
-      .map(p => p.replace(/[^\d]/g, '')) 
-      .map(p => p.slice(0, 3));
+      .map((p) => p.replace(/[^\d]/g, ''))
+      .map((p) => p.slice(0, 3));
 
     if (parts.length !== 3) return;
 
@@ -84,10 +91,10 @@ const HslInput: React.FC<Props> = ({ values, onChange, onBlurField }) => {
   };
 
   return (
-  <div style={{ display: 'flex', gap: '1rem', fontSize: '1.5rem' }}>
+    <div style={containerStyle}>
       <span>(</span>
       {values.map((value, index) => (
-        <div key={index} style={{display: 'flex', alignItems: 'center'}}>
+        <div key={index} style={inputWrapperStyle}>
           <input
             ref={inputsRef[index]}
             placeholder="000"
@@ -97,14 +104,11 @@ const HslInput: React.FC<Props> = ({ values, onChange, onBlurField }) => {
             onBlur={handleBlur(index)}
             onKeyDown={handleKeyDown(index)}
             onPaste={handlePaste}
-            style={{
-              width: '40px',
-              fontSize: '1.5rem',
-            }}
+            style={inputStyle}
           />
-        {index === 0 && <span>°</span>}
-        {index > 0 && <span>%</span>}
-        {index < 2 && <span>,</span>}
+          {index === 0 && <span>°</span>}
+          {index > 0 && <span>%</span>}
+          {index < 2 && <span>,</span>}
         </div>
       ))}
       <span>)</span>

@@ -26,7 +26,7 @@ const PageHeader: React.FC<Props> = ({ isSidebarOpen, handleSidebar, isInfoOpen,
     return (
         <div className="header">
             { renderPostInput  && 
-            <button className='m-4' onClick={handleSidebar}>
+            <button className='m-4 self-center' onClick={handleSidebar}>
                 {isSidebarOpen && !isInfoOpen ? 
                 <svg className="w-[48px] h-[48px] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M20 14h-2.722L11 20.278a5.511 5.511 0 0 1-.9.722H20a1 1 0 0 0 1-1v-5a1 1 0 0 0-1-1ZM9 3H4a1 1 0 0 0-1 1v13.5a3.5 3.5 0 1 0 7 0V4a1 1 0 0 0-1-1ZM6.5 18.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2ZM19.132 7.9 15.6 4.368a1 1 0 0 0-1.414 0L12 6.55v9.9l7.132-7.132a1 1 0 0 0 0-1.418Z"/>
@@ -67,7 +67,7 @@ const PageHeader: React.FC<Props> = ({ isSidebarOpen, handleSidebar, isInfoOpen,
             </>
             }
             </div>
-            <button className='m-4 justify-end' onClick={combinedInfoHandler}>
+            <button className='m-4 justify-end self-center' onClick={combinedInfoHandler}>
             {isInfoOpen ?
             <svg className="w-[48px] h-[48px] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
                 <path fill-rule="evenodd" d="M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10S2 17.523 2 12Zm9.408-5.5a1 1 0 1 0 0 2h.01a1 1 0 1 0 0-2h-.01ZM10 10a1 1 0 1 0 0 2h1v3h-1a1 1 0 1 0 0 2h4a1 1 0 1 0 0-2h-1v-4a1 1 0 0 0-1-1h-2Z" clip-rule="evenodd"/>

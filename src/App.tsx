@@ -9,8 +9,12 @@ import MainPage from './components/pages/manager';
 
 function App() {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
-  const handleSidebar = () => {
+  const handleSidebar = (a?: boolean) => {
+    if (a !== undefined) {
+      setSidebarOpen(a)
+    }
     setSidebarOpen(!isSidebarOpen);
+    console.log('sidebar handler')
   };
   
   const [isInfoOpen, setInfoOpen] = useState(false);

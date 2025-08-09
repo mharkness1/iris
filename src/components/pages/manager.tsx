@@ -18,10 +18,10 @@ const MainPage: React.FC<Props> = ({ isSidebarOpen, handleSidebar, isInfoOpen })
     const colourContext = useContext(ColourContext);
     const renderEmpty = (!isInfoOpen && (colourContext?.colours.length === 0 || colourContext?.colours === undefined))
     const renderPopulated = (!isInfoOpen && ((colourContext?.colours?.length ?? 0) > 0))
-    console.log(colourContext?.colours?.length)
+    const renderSidebar = (isSidebarOpen && !renderEmpty)
     return (
         <div className='whole-page'>
-          {isSidebarOpen && <Sidebar />}
+          { renderSidebar && <Sidebar handleSidebar={handleSidebar}/>}
           { renderEmpty && <Empty handleSidebar={handleSidebar}/>}
           { renderPopulated && <Populated /> }
           { isInfoOpen && <Info />}
