@@ -1,9 +1,10 @@
 .sidebar {
     left: 0;
     height: 100%;
-    width: 20vw;
+    width: 25vw;
     transition: left 0.3s ease-in-out;
-    background-color: gray;
     display: flex;
     flex-direction: column;
+    border-right: 2px solid;
+    border-color: light-dark(#242424, #ffffff);
 }

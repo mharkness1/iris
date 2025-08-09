@@ -2,7 +2,9 @@ const Info: React.FC = () => {
   
     return (
         <>
-        <div><h1>Info</h1></div>
+        <div className="main-section px-30">
+        <h1>Info</h1>
+        </div>
         </>
   )
 };

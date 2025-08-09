@@ -59,7 +59,7 @@ const InputColour: React.FC<Props> = ({ handleSidebar }) => {
     const [hslValues, setHslValues] = useState<[string, string, string]>(['','','']);
     const [hexValues, setHexValues] = useState<string>('');
     const colContext = useContext(ColourContext)
-    const { saveColour } = colContext as ColourContextType
+    const { saveColour, incrementer } = colContext as ColourContextType
 
     const handleHSLChange = (newValues: [string, string, string]) => {
         setHslValues(newValues);
@@ -106,10 +106,9 @@ const InputColour: React.FC<Props> = ({ handleSidebar }) => {
     const afterSubmission = (e: any) => {
         e.preventDefault();
         let colInput = e.target[2].value;
-        let col = createColour(InputParser(colInput, colourType as string) as ColourModes);
+        let col = createColour(InputParser(colInput, colourType as string) as ColourModes, String(incrementer), colourType as string);
         saveColour(col);
         handleSidebar();
-        console.log(colContext?.colours?.length)
     }
 
     switch (colourType) {

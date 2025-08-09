@@ -3,6 +3,7 @@ import { createContext, useState } from "react";
 
 export type ColourContextType = {
     colours: Colour[];
+    incrementer: number;
     saveColour: (col: Colour) => void;
     updateColour: (col: Colour, id: string) => void;
     removeColour: (id: string) => void;
@@ -12,9 +13,15 @@ export const ColourContext = createContext<ColourContextType | null>(null);
 
 const ColourProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     const [colours, setColours] = useState<Colour[]>([]);
+    const [incrementer, setIncrementer] = useState<number>(0);
+
+    const handleIncrementer = () => {
+        setIncrementer(incrementer + 1)
+    }
 
     const saveColour = (col: Colour) => {
         setColours(prev => [...prev, col]);
+        handleIncrementer();
     };
 
     const updateColour = (updated: Colour, id: string) => {
@@ -26,7 +33,7 @@ const ColourProvider: React.FC<{ children: React.ReactNode }> = ({ children }) =
     };
 
     return (
-        <ColourContext.Provider value={{ colours, saveColour, updateColour, removeColour }}>
+        <ColourContext.Provider value={{ colours, saveColour, updateColour, removeColour, incrementer }}>
             {children}
         </ColourContext.Provider>
     );

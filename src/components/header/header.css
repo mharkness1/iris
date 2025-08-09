@@ -3,13 +3,13 @@
     flex-direction: row;
     width: 100vw;
     padding-bottom: 2rem;
+    height: 100px;
 }
 
 .rainbow-box-header {
   position: relative;
   margin: 0.5rem;
-  width: 5%;
-  height: 5%;
+  height: 100%;
 }
 
 .rainbow-box-header:hover {
