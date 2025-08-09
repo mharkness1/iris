@@ -105,8 +105,16 @@ const InputColour: React.FC<Props> = ({ handleSidebar }) => {
     
     const afterSubmission = (e: any) => {
         e.preventDefault();
-        let colInput = e.target[2].value;
-        let col = createColour(InputParser(colInput, colourType as string) as ColourModes, String(incrementer), colourType as string);
+        let colInput: string = '';
+        if (colourType === 'hex') {
+            colInput = e.target[2].value;
+        } else {
+            colInput = '(' + e.target[2].value + ',' + e.target[3].value + ',' + e.target[4].value + ')';
+        };
+        console.log(colInput);
+        let parsedInput = InputParser(colInput, colourType as string);
+        console.log(parsedInput);
+        let col = createColour(parsedInput as ColourModes, String(incrementer), colourType as string);
         saveColour(col);
         handleSidebar();
     }
@@ -129,7 +137,7 @@ const InputColour: React.FC<Props> = ({ handleSidebar }) => {
         case "hsl":
             return (
                 <div>
-                    <form className="card">
+                    <form className="card" onSubmit={afterSubmission}>
                         <RandomButton onClick={handleRandomHSLClick}/>
                         { renderTypeInput }
                         <HslInput
@@ -143,7 +151,7 @@ const InputColour: React.FC<Props> = ({ handleSidebar }) => {
         case "rgb":
             return (
                 <div>
-                    <form className="card">
+                    <form className="card" onSubmit={afterSubmission}>
                         <RandomButton onClick={handleRandomRGBClick} />
                         { renderTypeInput }
                         <RgbInput
