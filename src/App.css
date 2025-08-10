@@ -66,3 +66,7 @@
 input:focus{
   outline: none;
 }
+
+.placeholder {
+  color: light-dark(#d3d3d3, #484848);
+}

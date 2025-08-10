@@ -165,7 +165,7 @@ const AddColourSidebar: React.FC = () => {
                     values={rgbValues}
                     onBlurField={handleRGBBlur}
                     onChange={handleRGBChange}
-                    containerStyle = { {display: 'flex', gap: '0.5rem', fontSize: '0.875rem', width:'70%'}}
+                    containerStyle = { {display: 'flex', gap: '0.5rem', fontSize: '1rem', width:'70%'}}
                     inputWrapperStyle = {{ display: 'flex', alignItems: 'center', width:'80%' }}
                     inputStyle = { {width: '95%', alignItems:'center', fontSize: '0.875rem' }}
                     />
@@ -175,7 +175,7 @@ const AddColourSidebar: React.FC = () => {
                     values={hslValues}
                     onBlurField={handleHSLBlur}
                     onChange={handleHSLChange}                     
-                    containerStyle = { {display: 'flex', gap: '0.2rem', fontSize: '0.875rem', width:'90%'}}
+                    containerStyle = { {display: 'flex', gap: '0.2rem', fontSize: '1rem', width:'90%'}}
                     inputWrapperStyle = {{ display: 'flex', alignItems: 'center', width:'100%' }}
                     inputStyle = { {width: '90%', fontSize: '0.875rem' }}/>
                     }
@@ -183,7 +183,7 @@ const AddColourSidebar: React.FC = () => {
                     <HexInput
                     values={hexValues}
                     onChange={handleHexChange}                     
-                    containerStyle = { {display: 'flex' ,gap: '0.5rem', fontSize: '0.875rem', width: '70%'}}
+                    containerStyle = { {display: 'flex' ,gap: '0.5rem', fontSize: '1rem', width: '70%'}}
                     inputWrapperStyle = {{ display: 'flex', alignItems: 'center', width:'90%' }}
                     inputStyle = { {width: '75%', fontSize: '0.875rem' }}/>
                     }

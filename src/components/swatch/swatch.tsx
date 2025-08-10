@@ -11,6 +11,7 @@ type Props = {
 const Sidebar: React.FC<Props> = ({handleSidebar}) => {
     const colourContext = useContext(ColourContext)
     const colours = colourContext?.colours
+
     return (
             <>
             <div className="sidebar h-full">
