@@ -18,9 +18,10 @@ const ColourBlock: React.FC<Props> = ({ colour, handleSidebar }) => {
 
     const handlePrimaryColour = () => {
         if (setPrimaryColour) {
-            setPrimaryColour(colour);
+            setPrimaryColour({...colour});
         }
     }
+    
     const cssColour = toCssString(colour)
     const isPrimaryColour: boolean = (colourContext?.primaryColour?.name === colour?.name)
     
@@ -28,7 +29,7 @@ const ColourBlock: React.FC<Props> = ({ colour, handleSidebar }) => {
         <div className={'colour-block m-3'} style={{ background: cssColour,  border: isPrimaryColour ? '2px solid white' : '2px solid ' + cssColour}} onClick={handlePrimaryColour}>
             <div className='flex flex-row justify-between w-auto'>
             <EditColourButton lum={colour.luminance} />
-            <RemoveColourButton lum={colour.luminance} id={colour.name} handleSidebar={handleSidebar} />
+            <RemoveColourButton col={colour} handleSidebar={handleSidebar} />
             </div>
             <div className='flex flex-row justify-between'>
                 <p style={{ color: useWhite ? "#ffffff" : "#000000" }} className='text-sm'>Colour: {colour.name}</p>

@@ -1,15 +1,22 @@
 import { useContext } from "react";
 import { ColourContext } from "../../context/colourContext";
 import '../../App.css'
+import { toCssString } from "iris-colour";
 
 const Populated: React.FC = () => {
     const colourContext = useContext(ColourContext);
     const primaryColour = colourContext?.primaryColour;
+    const setPrimaryColour = colourContext?.setPrimaryColour;
     
     if (primaryColour) {
         return (
         <div className="main-section">
-            <p className="text-2xl">Colour: {primaryColour.name}</p>
+            <div className="flex flex-row items-center ">
+            <div className="w-6 h-6 rounded-md mx-3" style={{background: toCssString(primaryColour)}}></div>
+            <p className="text-2xl"> Colour: {primaryColour.name}</p>
+            <button onClick={() => setPrimaryColour && setPrimaryColour(null)}>Clear Primary Colour</button>
+            <p>Primary colour: {primaryColour?.name ?? "none"}</p>
+        </div>
         </div>
         )
     } else {

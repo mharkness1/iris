@@ -9,6 +9,7 @@
     border-color: light-dark(#242424, #ffffff);
     overflow-y:auto;
     overflow-x: hidden;
+    max-width: 23vw;
 }
 
 .add-colour-button {

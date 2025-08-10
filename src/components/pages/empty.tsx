@@ -8,7 +8,7 @@ type Props = {
 const Empty: React.FC<Props> = ({handleSidebar}) => {
  
   return (
-    <div className='main-section'>
+    <div className='main-section items-center text-center'>
           <svg width="100%" height="100%" viewBox="0 0 988 962" className='rainbow-box' stroke='currentColor' fill='currentColor'>
             <g transform="matrix(1,0,0,1,-149.014,-1310.86)">
               <g transform="matrix(5.253,0,0,5.253,-3977.93,-767.176)">
