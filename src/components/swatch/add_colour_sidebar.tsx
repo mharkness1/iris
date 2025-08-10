@@ -18,6 +18,16 @@ const AddButton = () => {
     )
 }
 
+const RandomButton = ({ onClick }: { onClick?: () => void }) => {
+    return (
+        <button type="button" id="random_button" onClick={onClick}>
+            <svg className="w-5 h-5 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+               <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M13.484 9.166 15 7h5m0 0-3-3m3 3-3 3M4 17h4l1.577-2.253M4 7h4l7 10h5m0 0-3 3m3-3-3-3"/>
+            </svg>
+        </button>
+    )
+}
+
 const useColourTypeInput = () => {
     const [colourType, setColourType] = useState<ColourFormat>("hex");
 
@@ -38,15 +48,6 @@ const useColourTypeInput = () => {
     }
 }
 
-const RandomButton = ({ onClick }: { onClick?: () => void }) => {
-    return (
-        <button type="button" id="random_button" onClick={onClick}>
-            <svg className="w-5 h-5 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-               <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M13.484 9.166 15 7h5m0 0-3-3m3 3-3 3M4 17h4l1.577-2.253M4 7h4l7 10h5m0 0-3 3m3-3-3-3"/>
-            </svg>
-        </button>
-    )
-}
 
 const AddColourSidebar: React.FC = () => {
     const { colourType, renderTypeInput } = useColourTypeInput();
@@ -56,9 +57,9 @@ const AddColourSidebar: React.FC = () => {
     const [hexValues, setHexValues] = useState<string>('');
     const colContext = useContext(ColourContext)
     const { saveColour, incrementer } = colContext as ColourContextType
-    const rgb: boolean = (colourType === 'rgb')
-    const hex: boolean = (colourType === 'hex')
-    const hsl: boolean = (colourType === 'hsl')
+    let rgb: boolean = (colourType === 'rgb')
+    let hex: boolean = (colourType === 'hex')
+    let hsl: boolean = (colourType === 'hsl')
 
     const handleAddSidebar = () => {
         setAddProcess(true)
@@ -122,10 +123,21 @@ const AddColourSidebar: React.FC = () => {
         
         const afterSubmission = (e: any) => {
             e.preventDefault();
-            let colInput = e.target[3].value;
+            let colInput: string = '';
+            if (colourType === 'hex') {
+                colInput = e.target[3].value;
+            } else if (colourType === 'rgb'){
+                colInput = '(' + e.target[3].value + ',' + e.target[4].value + ',' + e.target[5].value + ')';
+            } else {
+                colInput = '(' + e.target[3].value + ',' + e.target[4].value + '%,' + e.target[5].value + '%)';
+            };
             console.log(colInput)
             let col = createColour(InputParser(colInput, colourType as string) as ColourModes, String(incrementer), colourType as string);
             saveColour(col);
+            setAddProcess(false);
+            setRgbValues(['','','']);
+            setHexValues('');
+            setHslValues(['','','']);
         }
 
 
@@ -139,35 +151,45 @@ const AddColourSidebar: React.FC = () => {
         </button>
         }
         { isAddProcess &&
-        <div className='add-colour-card m-3'>
-            <form onSubmit={afterSubmission}>
+            <form onSubmit={afterSubmission} className='add-colour-card m-3'>
                 <div className='flex flex-row justify-between'>
                     <RandomButton onClick={handleAllRandom} />
                     <AddButton />
                 </div>
-                <div>
+                <div className='flex flex-row items-center justify-between mx-2'>
                     { renderTypeInput }
                     {rgb && 
-                    <RgbInput values={rgbValues} onBlurField={handleRGBBlur} onChange={handleRGBChange}/>
+                    <RgbInput
+                    values={rgbValues}
+                    onBlurField={handleRGBBlur}
+                    onChange={handleRGBChange}
+                    containerStyle = { {display: 'flex', gap: '0.5rem', fontSize: '0.875rem', width:'70%' }}
+                    inputWrapperStyle = {{ display: 'flex', alignItems: 'center', width:'80%' }}
+                    inputStyle = { {width: '95%', alignItems:'center', fontSize: '0.875rem' }}
+                    />
                     }
                     {hsl &&
-                    <HslInput values={hslValues} onBlurField={handleHSLBlur} onChange={handleHSLChange} />
+                    <HslInput
+                    values={hslValues}
+                    onBlurField={handleHSLBlur}
+                    onChange={handleHSLChange}                     
+                    containerStyle = { {display: 'flex', gap: '0.2rem', fontSize: '0.875rem', width:'90%'}}
+                    inputWrapperStyle = {{ display: 'flex', alignItems: 'center', width:'100%' }}
+                    inputStyle = { {width: '90%', fontSize: '0.875rem' }}/>
                     }
                     {hex &&
-                    <HexInput values={hexValues} onChange={handleHexChange}/>
+                    <HexInput
+                    values={hexValues}
+                    onChange={handleHexChange}                     
+                    containerStyle = { {display: 'flex',flexDirection: 'row' ,gap: '0.5rem', justifyContent:'space-between', fontSize: '0.875rem', width: '75%', padding:'1rem' }}
+                    inputWrapperStyle = {{ display: 'flex', alignItems: 'center', width:'85%' }}
+                    inputStyle = { {width: '75%', fontSize: '0.875rem' }}/>
                     }
                 </div>
             </form>
-        </div>
         }
         </>
     )
 }
 
-export default AddColourSidebar
-
-/* Plus svg for conditional render
-<svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7 7V5"/>
-</svg>
-*/
+export default AddColourSidebar;

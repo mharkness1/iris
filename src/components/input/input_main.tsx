@@ -108,8 +108,10 @@ const InputColour: React.FC<Props> = ({ handleSidebar }) => {
         let colInput: string = '';
         if (colourType === 'hex') {
             colInput = e.target[2].value;
-        } else {
+        } else if (colourType === 'rgb'){
             colInput = '(' + e.target[2].value + ',' + e.target[3].value + ',' + e.target[4].value + ')';
+        } else {
+            colInput = '(' + e.target[2].value + ',' + e.target[3].value + '%,' + e.target[4].value + '%)';
         };
         console.log(colInput);
         let parsedInput = InputParser(colInput, colourType as string);
