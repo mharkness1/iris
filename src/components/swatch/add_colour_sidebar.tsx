@@ -37,6 +37,7 @@ const useColourTypeInput = () => {
     };
 
     return {
+    setColourType,
     colourType: colourType,
     renderTypeInput:(
         <select className="text-sm" name="selectedFormat" onChange={onOptionChange} defaultValue="hex">
@@ -50,7 +51,7 @@ const useColourTypeInput = () => {
 
 
 const AddColourSidebar: React.FC = () => {
-    const { colourType, renderTypeInput } = useColourTypeInput();
+    const { colourType, renderTypeInput, setColourType } = useColourTypeInput();
     const [isAddProcess, setAddProcess] = useState<boolean>(false);
     const [rgbValues, setRgbValues] = useState<[string, string, string]>(['', '', '']);
     const [hslValues, setHslValues] = useState<[string, string, string]>(['','','']);
@@ -138,6 +139,7 @@ const AddColourSidebar: React.FC = () => {
             setRgbValues(['','','']);
             setHexValues('');
             setHslValues(['','','']);
+            setColourType("hex");
         }
 
 
