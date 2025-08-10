@@ -158,14 +158,14 @@ const AddColourSidebar: React.FC = () => {
                     <RandomButton onClick={handleAllRandom} />
                     <AddButton />
                 </div>
-                <div className='flex flex-row items-center justify-between mx-2'>
+                <div className='flex flex-row items-center justify-between mx-2 pb-1'>
                     { renderTypeInput }
                     {rgb && 
                     <RgbInput
                     values={rgbValues}
                     onBlurField={handleRGBBlur}
                     onChange={handleRGBChange}
-                    containerStyle = { {display: 'flex', gap: '0.5rem', fontSize: '0.875rem', width:'70%' }}
+                    containerStyle = { {display: 'flex', gap: '0.5rem', fontSize: '0.875rem', width:'70%'}}
                     inputWrapperStyle = {{ display: 'flex', alignItems: 'center', width:'80%' }}
                     inputStyle = { {width: '95%', alignItems:'center', fontSize: '0.875rem' }}
                     />
@@ -183,8 +183,8 @@ const AddColourSidebar: React.FC = () => {
                     <HexInput
                     values={hexValues}
                     onChange={handleHexChange}                     
-                    containerStyle = { {display: 'flex',flexDirection: 'row' ,gap: '0.5rem', justifyContent:'space-between', fontSize: '0.875rem', width: '75%', padding:'1rem' }}
-                    inputWrapperStyle = {{ display: 'flex', alignItems: 'center', width:'85%' }}
+                    containerStyle = { {display: 'flex' ,gap: '0.5rem', fontSize: '0.875rem', width: '70%'}}
+                    inputWrapperStyle = {{ display: 'flex', alignItems: 'center', width:'90%' }}
                     inputStyle = { {width: '75%', fontSize: '0.875rem' }}/>
                     }
                 </div>
