@@ -16,8 +16,7 @@
 .rainbow-box-header:hover {
   margin: 0.5rem;
   position: relative;
-  width: 5%;
-  height: 5%;
+  height: 100%;
   filter: drop-shadow(0 0 30px red);
   animation: rainbowDropShadow 10s infinite linear;
   
