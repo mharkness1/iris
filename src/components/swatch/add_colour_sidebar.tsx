@@ -176,7 +176,7 @@ const AddColourSidebar: React.FC = () => {
                     onBlurField={handleHSLBlur}
                     onChange={handleHSLChange}                     
                     containerStyle = { {display: 'flex', gap: '0.3rem', fontSize: '1rem', width:'90%'}}
-                    inputWrapperStyle = {{ display: 'flex', alignItems: 'center', width:'100%', gap: '0rem', flexGrow: '1'}}
+                    inputWrapperStyle = {{ display: 'flex', alignItems: 'center', width:'100%', gap: '0.3rem', flexGrow: '1'}}
                     inputStyle = { {width: '100%', fontSize: '0.875rem', marginInlineEnd:'0.1rem'}}/>
                     }
                     {hex &&

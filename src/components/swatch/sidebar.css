@@ -1,7 +1,7 @@
 .sidebar {
     left: 0;
     height: 100%;
-    min-width: 23vw;
+    min-width: 18vw;
     transition: left 0.3s ease-in-out;
     display: flex;
     flex-direction: column;

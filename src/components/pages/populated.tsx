@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { ColourContext } from "../../context/colourContext";
 import '../../App.css'
 import { toCssString } from "iris-colour";
+import PalettePage from "../palettes/palette_block";
 
 const Populated: React.FC = () => {
     const colourContext = useContext(ColourContext);
@@ -11,12 +12,19 @@ const Populated: React.FC = () => {
     if (primaryColour) {
         return (
         <div className="main-section">
-            <div className="flex flex-row items-center ">
-            <div className="w-6 h-6 rounded-md mx-3" style={{background: toCssString(primaryColour)}}></div>
-            <p className="text-2xl"> Colour: {primaryColour.name}</p>
-            <button onClick={() => setPrimaryColour && setPrimaryColour(null)}>Clear Primary Colour</button>
-            <p>Primary colour: {primaryColour?.name ?? "none"}</p>
-        </div>
+            <div className="flex flex-row items-center justify-between">
+                <div className="self-start flex flex-row items-center">
+                    <div className="w-6 h-6 rounded-md mx-3" style={{background: toCssString(primaryColour)}}></div>
+                        <p className="text-2xl"> Colour: {primaryColour.name}</p>
+                    </div>
+                <button className="flex flex-row items-center hover:text-gray-400" onClick={() => setPrimaryColour && setPrimaryColour(null)}>
+                    <p className="mx-2">Clear Colour</p>
+                    <svg className="w-[36px] h-[36px] text-white hover:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.3" d="m15 9-6 6m0-6 6 6m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
+                    </svg>
+                </button>
+            </div>
+            <PalettePage />
         </div>
         )
     } else {
