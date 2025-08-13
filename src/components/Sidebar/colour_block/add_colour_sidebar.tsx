@@ -1,12 +1,12 @@
 import { useState, useContext } from 'react'
 import './sidebar.css'
-import { type ColourFormat } from '../input/input_main'
-import { ColourContext, type ColourContextType } from '../../context/colourContext'
-import { getRandomHSL, getRandomHex, getRandomRGB, formatHSLValues, formatRGBValues } from '../input/helpers'
+import { type ColourFormat } from '../../input/input_main'
+import { ColourContext, type ColourContextType } from '../../../context/colourContext'
+import { getRandomHSL, getRandomHex, getRandomRGB, formatHSLValues, formatRGBValues } from '../../input/helpers'
 import { createColour, type ColourModes, InputParser } from 'iris-colour'
-import HexInput from '../input/hex_input'
-import HslInput from '../input/hsl_input'
-import RgbInput from '../input/rgb_input'
+import HexInput from '../../input/hex_input'
+import HslInput from '../../input/hsl_input'
+import RgbInput from '../../input/rgb_input'
 
 const AddButton = () => {
     return (

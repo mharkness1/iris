@@ -1,5 +1,5 @@
 import { ColourContext } from "../../context/colourContext";
-import AddColourSidebar from "./add_colour_sidebar";
+import AddColourSidebar from "./colour_block/add_colour_sidebar";
 import ColourBlock from "./colour_block/colour_block";
 import "./sidebar.css"
 import { useContext } from "react";

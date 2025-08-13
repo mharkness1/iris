@@ -5,7 +5,7 @@ import { useContext } from "react";
 import { ColourContext } from "../../context/colourContext";
 import Populated from "./populated";
 import Empty from "./empty";
-import Sidebar from "../swatch/swatch";
+import Sidebar from "../Sidebar/sidebar";
 import Info from "./info";
 
 type Props = {
