@@ -11,8 +11,11 @@ const PalettePage: React.FC = () => {
 
     if (primaryColour) {
         const ComplementPalette = genComplement(primaryColour)
+        console.log(ComplementPalette)
         const AnalagousPalette = genAnalagousPalette(primaryColour)
+        console.log(AnalagousPalette)
         const TriadicPalette = genTriadicPalette(primaryColour)
+        console.log(TriadicPalette)
         const TetraticPalette = genTetradicPalette(primaryColour)
         const QuadraticPalette = genQuadraticPalette(primaryColour)
         const MonochromePalette = genMonochromePalette(primaryColour)

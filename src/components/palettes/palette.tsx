@@ -23,8 +23,8 @@ const PaletteRender: React.FC<Props> = ({ palette }) => {
             <div>{palette.type}</div>
             <div className='palette'>
                 {
-                    palette.colours.map((colour, ) => 
-                    <ColourSquare colour={colour} />
+                    palette.colours.map((colour, index ) => 
+                    <ColourSquare colour={colour} key={index}/>
                     )
                 }
             </div>

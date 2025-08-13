@@ -1,5 +1,5 @@
 import { useState, useContext } from 'react'
-import './sidebar.css'
+import '../sidebar.css'
 import { type ColourFormat } from '../../input/input_main'
 import { ColourContext, type ColourContextType } from '../../../context/colourContext'
 import { getRandomHSL, getRandomHex, getRandomRGB, formatHSLValues, formatRGBValues } from '../../input/helpers'
