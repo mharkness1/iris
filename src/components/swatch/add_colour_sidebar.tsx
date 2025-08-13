@@ -165,9 +165,9 @@ const AddColourSidebar: React.FC = () => {
                     values={rgbValues}
                     onBlurField={handleRGBBlur}
                     onChange={handleRGBChange}
-                    containerStyle = { {display: 'flex', gap: '0.5rem', fontSize: '1rem', width:'70%'}}
-                    inputWrapperStyle = {{ display: 'flex', alignItems: 'center', width:'80%' }}
-                    inputStyle = { {width: '95%', alignItems:'center', fontSize: '0.875rem' }}
+                    containerStyle = { {display: 'flex', gap: '0.4rem', fontSize: '1rem', width:'75%'}}
+                    inputWrapperStyle = {{ display: 'flex', alignItems: 'center', marginInline: 'auto', gap:'0.1rem' }}
+                    inputStyle = { { width:'90%', alignItems:'center', fontSize: '0.875rem', paddingInline:'0.3rem', flexGrow:'1' }}
                     />
                     }
                     {hsl &&
@@ -175,16 +175,16 @@ const AddColourSidebar: React.FC = () => {
                     values={hslValues}
                     onBlurField={handleHSLBlur}
                     onChange={handleHSLChange}                     
-                    containerStyle = { {display: 'flex', gap: '0.2rem', fontSize: '1rem', width:'90%'}}
-                    inputWrapperStyle = {{ display: 'flex', alignItems: 'center', width:'100%' }}
-                    inputStyle = { {width: '90%', fontSize: '0.875rem' }}/>
+                    containerStyle = { {display: 'flex', gap: '0.3rem', fontSize: '1rem', width:'90%'}}
+                    inputWrapperStyle = {{ display: 'flex', alignItems: 'center', width:'100%', gap: '0rem', flexGrow: '1'}}
+                    inputStyle = { {width: '100%', fontSize: '0.875rem', marginInlineEnd:'0.1rem'}}/>
                     }
                     {hex &&
                     <HexInput
                     values={hexValues}
                     onChange={handleHexChange}                     
-                    containerStyle = { {display: 'flex' ,gap: '0.5rem', fontSize: '1rem', width: '70%'}}
-                    inputWrapperStyle = {{ display: 'flex', alignItems: 'center', width:'90%' }}
+                    containerStyle = { {display: 'flex' ,gap: '0', fontSize: '1rem', width: '55%', alignItems: "center"} }
+                    inputWrapperStyle = {{ display: 'flex', alignItems: 'center', justifyItems: 'center', justifyContent:'center', width:'60%' }}
                     inputStyle = { {width: '75%', fontSize: '0.875rem' }}/>
                     }
                 </div>
