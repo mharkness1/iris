@@ -14,7 +14,7 @@ const RemoveColourButton: React.FC<{ col: Colour, handleSidebar: () => void }> =
     const handlePrimaryColour = () => setPrimaryColour && setPrimaryColour(null);
     
     useEffect(() => {
-        if (primaryColour && colours && !colours.find(c => c.name === primaryColour.name)) {
+        if (primaryColour && colours && !(col.name === primaryColour.name)) {
             handlePrimaryColour();
         }
     }, [colours, primaryColour])
