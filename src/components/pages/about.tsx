@@ -1,4 +1,4 @@
-const Info: React.FC = () => {
+const AboutPage: React.FC = () => {
   
     return (
         <>
@@ -9,4 +9,4 @@ const Info: React.FC = () => {
   )
 };
 
-export default Info;
+export default AboutPage;

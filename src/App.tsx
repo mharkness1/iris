@@ -5,8 +5,6 @@ import PageHeader from './components/header/header';
 import MainPage from './components/pages/manager';
 
 
-// Prop drill the sidebar status, wrap everything in colour context.
-
 function App() {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
   const handleSidebar = (a?: boolean) => {
@@ -17,16 +15,11 @@ function App() {
     console.log('sidebar handler')
   };
   
-  const [isInfoOpen, setInfoOpen] = useState(false);
-  const handleInfo = () => {
-    setInfoOpen(!isInfoOpen);
-  }
-
   return (
     <ColourProvider>
       <>
-        <PageHeader isSidebarOpen={isSidebarOpen} handleSidebar={handleSidebar} isInfoOpen={isInfoOpen} handleInfo={handleInfo}/>
-        <MainPage isSidebarOpen={isSidebarOpen} handleSidebar={handleSidebar} isInfoOpen={isInfoOpen}/>
+        <PageHeader isSidebarOpen={isSidebarOpen} handleSidebar={handleSidebar} />
+        <MainPage isSidebarOpen={isSidebarOpen} handleSidebar={handleSidebar} />
       </>
     </ColourProvider>
   )

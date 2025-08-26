@@ -8,9 +8,9 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  height: -moz-calc(100% - 100px); /* Firefox */
-  height: -webkit-calc(100% - 100px); /* Chrome, Safari */
-  height: calc(100% - 100px); /* IE9+ and future browsers */
+  height: -moz-calc(100% - 100px - 2rem); /* Firefox */
+  height: -webkit-calc(100% - 100px - 2rem); /* Chrome, Safari */
+  height: calc(100% - 100px - 2rem); /* IE9+ and future browsers */
 }
 
 .main-section {

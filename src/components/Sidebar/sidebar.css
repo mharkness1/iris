@@ -21,7 +21,6 @@
     padding: 10px;
     border: 1px solid;
     border-color: light-dark(#242424, #ffffff);
-    border-radius: 10px;
     margin: 0.75rem;
 }
 .add-colour-button:hover {
@@ -35,7 +34,6 @@
     width: 90%;
     height:75px;
     padding: 10px;
-    border-radius: 10px;
     border: 1px solid;
     border-color: light-dark(#242424, #ffffff);
 }

@@ -5,29 +5,20 @@ import { ColourContext } from '../../context/colourContext';
 type Props = {
     isSidebarOpen: boolean,
     handleSidebar: () => void;
-    isInfoOpen: boolean;
-    handleInfo: () => void;
 }
 
-const PageHeader: React.FC<Props> = ({ isSidebarOpen, handleSidebar, isInfoOpen, handleInfo }) => {
+const PageHeader: React.FC<Props> = ({ isSidebarOpen, handleSidebar }) => {
     const colourContext = useContext(ColourContext);
     const colours = colourContext?.colours;
 
-    const renderPostInput: boolean = (colours !== undefined && colours.length > 0 && !isInfoOpen)
+    const renderPostInput: boolean = (colours !== undefined && colours.length > 0)
 
-    const combinedInfoHandler = () => {
-        handleInfo();
-        if (isSidebarOpen) {
-        handleSidebar();
-        }
-        console.log('handled')
-    }
 
     return (
         <div className="header">
             { renderPostInput  && 
             <button className='m-4 self-center' onClick={handleSidebar}>
-                {isSidebarOpen && !isInfoOpen ? 
+                {isSidebarOpen ?
                 <svg className="w-[48px] h-[48px] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M20 14h-2.722L11 20.278a5.511 5.511 0 0 1-.9.722H20a1 1 0 0 0 1-1v-5a1 1 0 0 0-1-1ZM9 3H4a1 1 0 0 0-1 1v13.5a3.5 3.5 0 1 0 7 0V4a1 1 0 0 0-1-1ZM6.5 18.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2ZM19.132 7.9 15.6 4.368a1 1 0 0 0-1.414 0L12 6.55v9.9l7.132-7.132a1 1 0 0 0 0-1.418Z"/>
                 </svg>
@@ -67,16 +58,10 @@ const PageHeader: React.FC<Props> = ({ isSidebarOpen, handleSidebar, isInfoOpen,
             </>
             }
             </div>
-            <button className='m-4 justify-end self-center' onClick={combinedInfoHandler}>
-            {isInfoOpen ?
-            <svg className="w-[48px] h-[48px] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-                <path fill-rule="evenodd" d="M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10S2 17.523 2 12Zm9.408-5.5a1 1 0 1 0 0 2h.01a1 1 0 1 0 0-2h-.01ZM10 10a1 1 0 1 0 0 2h1v3h-1a1 1 0 1 0 0 2h4a1 1 0 1 0 0-2h-1v-4a1 1 0 0 0-1-1h-2Z" clip-rule="evenodd"/>
-            </svg>
-            :
+            <button className='m-4 justify-end self-center'>
             <svg className="w-[48px] h-[48px] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 24 24">
                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M10 11h2v5m-2 0h4m-2.592-8.5h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
             </svg>
-            }
             </button>
 
         </div>
