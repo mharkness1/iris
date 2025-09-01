@@ -14,14 +14,14 @@
     height: 5rem;
     padding: 1rem;
     min-height: 5rem;
-    border: 1px solid #FCFBFF;
-    border-right: 8px solid #FCFBFF;
-    border-bottom: 8px solid #FCFBFF;
-    background-color: #121212;
+    border: 2px solid var(--color-secondary);
+    border-right: 8px solid var(--color-secondary);
+    border-bottom: 8px solid var(--color-secondary);
+    background-color: var(--color-background);
 }
 
 .rainbow-box-header {
-  color: white;                 /* default fill/stroke */
+  color: var(--color-secondary);                 /* default fill/stroke */
   transition: color 1s ease, 
               filter 1s ease;   /* ensures graceful fade back */
 }
@@ -40,6 +40,8 @@
 .nav-links {
   font-family: "Jersey", sans-serif;
   font-size: 2rem;
+  color: var(--color-secondary);
+  transition: color 1s ease;
 }
 .nav-links:hover {
   text-decoration: underline;

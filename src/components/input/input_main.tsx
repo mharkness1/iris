@@ -123,7 +123,7 @@ const InputColour: React.FC = () => {
         case "hex":
             return (
                 <div>
-                    <form className="card" onSubmit={afterSubmission}>
+                    <form className="card pixel-font" onSubmit={afterSubmission}>
                         <RandomButton onClick={handleRandomHexClick}/>
                         { renderTypeInput }
                         <HexInput
@@ -137,7 +137,7 @@ const InputColour: React.FC = () => {
         case "hsl":
             return (
                 <div>
-                    <form className="card" onSubmit={afterSubmission}>
+                    <form className="card pixel-font" onSubmit={afterSubmission}>
                         <RandomButton onClick={handleRandomHSLClick}/>
                         { renderTypeInput }
                         <HslInput
@@ -151,7 +151,7 @@ const InputColour: React.FC = () => {
         case "rgb":
             return (
                 <div>
-                    <form className="card" onSubmit={afterSubmission}>
+                    <form className="card pixel-font" onSubmit={afterSubmission}>
                         <RandomButton onClick={handleRandomRGBClick} />
                         { renderTypeInput }
                         <RgbInput

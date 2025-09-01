@@ -1,15 +1,21 @@
 .sidebar {
     left: 0;
     height: 100%;
-    min-width: 18vw;
-    transition: left 0.3s ease-in-out;
+    min-width: 15vw;
+    transition: left 1s ease-in-out;
     display: flex;
     flex-direction: column;
-    border-right: 2px solid;
-    border-color: light-dark(#242424, #ffffff);
+    margin: 1rem;
+    border: 2px solid;
+    border-right: 8px solid;
+    border-bottom: 8px solid;
     overflow-y:auto;
     overflow-x: hidden;
     max-width: 23vw;
+    font-family: "Jersey";
+    color: var(--color-secondary);
+} .sidebar p {
+    font-size: 1.75rem;
 }
 
 .add-colour-button {
@@ -23,6 +29,8 @@
     border-color: light-dark(#242424, #ffffff);
     margin: 0.75rem;
 }
+
+
 .add-colour-button:hover {
     background-color: light-dark(#ededed, #313131);
 }

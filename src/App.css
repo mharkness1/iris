@@ -20,6 +20,8 @@
   height: 100%;
   padding-left: 3rem;
   padding-right: 3rem;
+  color: var(--color-secondary);
+  transition: color 1s ease;
 }
 
 .card {
@@ -34,8 +36,4 @@
 
 input:focus{
   outline: none;
-}
-
-.placeholder {
-  color: light-dark(#d3d3d3, #484848);
 }

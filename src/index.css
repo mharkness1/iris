@@ -3,26 +3,33 @@
   font-family: "Jersey", sans-serif;
   src: url("public/Jersey10-Regular.ttf");
 }
-:root {
-  font-family: 'Trebuchet MS', sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+@custom-variant dark (&:where(.dark, .dark *));
 
-  color-scheme: light dark;
-  background-color: #121212;
+@theme {
+  --color-background: #FCFBFF;
+  --color-secondary: #121212;
+  --color-mid: #858585;
+  --color-accent-plum: #5c1848;
+}
+
+.dark {
+  --color-background: #121212;
+  --color-secondary: #FCFBFF;
+  --color-mid: #858585;
+  --color-accent-plum: #5c1848;
+}
+
+:root {
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  line-height: 1.5;
+
+  background-color: var(--color-background);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-
 
 body {
   margin: 0;
@@ -38,12 +45,10 @@ h1 {
   font-weight: bold;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
+.pixel-font {
+  font-family: "Jersey";
+}
+
+.secondary-col {
+  color: var(--color-secondary)
 }

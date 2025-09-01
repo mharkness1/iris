@@ -1,33 +1,18 @@
-import { ColourContext } from "../../context/colourContext";
-import ColourBlock from "./colour_block/colour_block";
-import AddColourSidebar from "./colour_block/add_colour_sidebar";
 import './sidebar.css'
-import { useContext } from "react";
 
 type Props = {
-    handleSidebar: () => void;
+    name: string;
 }
 
-const Sidebar: React.FC<Props> = ({handleSidebar}) => {
-    const colourContext = useContext(ColourContext)
-    const colours = colourContext?.colours
+const Sidebar: React.FC<Props> = ({ name }) => {
 
     return (
-            <>
             <div className="sidebar h-full">
-                <div className="px-4 py-2">
+
                 <div className="text-xl text-center">
-                    <b>Colours</b>
-                    {
-                        colours?.map(colour =>
-                            <ColourBlock key={colour.name} colour={colour} handleSidebar={handleSidebar}/>
-                        )
-                    }
-                    <AddColourSidebar />
+                    <p>{name}</p>
                 </div>
                 </div>
-            </div>
-            </>
     );
 }
 

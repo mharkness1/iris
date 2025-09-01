@@ -1,3 +1,4 @@
+import ThemeToggle from '../../utils/themeToggle';
 import './header.css'
 
 const PageHeader: React.FC = () => {
@@ -30,13 +31,14 @@ const PageHeader: React.FC = () => {
 
 
             </div>
-            <div className='justify-self-end self-center'>
-                <button className='m-4 self-center'>
-                    <p className='nav-links'>ABOUT</p>
+            <div className='justify-self-end self-center pr-4 flex'>
+                <button className='m-2 p-3 self-center nav-links'>
+                    <p>ABOUT</p>
                 </button>
-                <button className='m-4 self-center'>
-                    <p className='nav-links'>SUPPORT</p>
+                <button className='m-2 p-3 self-center nav-links'>
+                    <p>SUPPORT</p>
                 </button>
+                <ThemeToggle />
             </div>
         </div>
     )
