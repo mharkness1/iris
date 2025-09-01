@@ -11,8 +11,8 @@ export type ColourFormat = "hex" | "rgb" | "hsl"
 const useColourTypeInput = () => {
     const [colourType, setColourType] = useState<ColourFormat>("hex");
 
-    const onOptionChange = (event: any) => {
-        setColourType(event.target.value);
+    const onOptionChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+        setColourType(event.target.value as ColourFormat);
         console.log("type selected = ", event.target.value);
     };
 
@@ -99,20 +99,23 @@ const InputColour: React.FC = () => {
         setRgbValues(updated);
     };
     
-    const afterSubmission = (e: any) => {
+    const afterSubmission = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         let colInput: string = '';
+        const target = e.target as typeof e.target & {
+            [key: number]: { value: string };
+        };
         if (colourType === 'hex') {
-            colInput = e.target[2].value;
+            colInput = target[2].value;
         } else if (colourType === 'rgb'){
-            colInput = '(' + e.target[2].value + ',' + e.target[3].value + ',' + e.target[4].value + ')';
+            colInput = '(' + target[2].value + ',' + target[3].value + ',' + target[4].value + ')';
         } else {
-            colInput = '(' + e.target[2].value + ',' + e.target[3].value + '%,' + e.target[4].value + '%)';
+            colInput = '(' + target[2].value + ',' + target[3].value + '%,' + target[4].value + '%)';
         };
         console.log(colInput);
-        let parsedInput = InputParser(colInput, colourType as string);
+        const parsedInput = InputParser(colInput, colourType as string);
         console.log(parsedInput);
-        let col = createColour(parsedInput as ColourModes, String(incrementer), colourType as string);
+        const col = createColour(parsedInput as ColourModes, String(incrementer), colourType as string);
         saveColour(col);
     }
 
