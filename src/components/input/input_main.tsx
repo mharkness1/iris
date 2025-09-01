@@ -49,11 +49,7 @@ const RandomButton = ({ onClick }: { onClick?: () => void }) => {
     )
 }
 
-type Props = {
-    handleSidebar: () => void;
-}
-
-const InputColour: React.FC<Props> = ({ handleSidebar }) => {
+const InputColour: React.FC = () => {
     const { colourType, renderTypeInput } = useColourTypeInput();
     const [rgbValues, setRgbValues] = useState<[string, string, string]>(['', '', '']);
     const [hslValues, setHslValues] = useState<[string, string, string]>(['','','']);
@@ -118,7 +114,6 @@ const InputColour: React.FC<Props> = ({ handleSidebar }) => {
         console.log(parsedInput);
         let col = createColour(parsedInput as ColourModes, String(incrementer), colourType as string);
         saveColour(col);
-        handleSidebar();
     }
 
     switch (colourType) {

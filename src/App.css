@@ -22,37 +22,6 @@
   padding-right: 3rem;
 }
 
-.rainbow-box {
-  padding: 2rem;
-  width: 300px;
-  height: 200px;
-  border-radius: 20px;
-}
-
-.rainbow-box:hover {
-  width: 300px;
-  height: 200px;
-  border-radius: 20px;
-  filter: drop-shadow(0 0 30px red);
-  animation: rainbowDropShadow 5s infinite linear;
-}
-
-
-@keyframes rainbowDropShadow {
-  0%  { filter: drop-shadow(0 0 30px red); }
-  10% { filter: drop-shadow(0 0 30px orange); }
-  20% { filter: drop-shadow(0 0 30px yellow); }
-  30% { filter: drop-shadow(0 0 30px #39ff14); }
-  40% { filter: drop-shadow(0 0 30px green); }
-  50% { filter: drop-shadow(0 0 30px #04d9ff); }
-  60% { filter: drop-shadow(0 0 30px blue); }
-  70% { filter: drop-shadow(0 0 30px indigo); }
-  80% { filter: drop-shadow(0 0 30px #8b008b)}
-  80% { filter: drop-shadow(0 0 30px violet); }
-  90% { filter: drop-shadow(0 0 30px #fb0094); }
-
-}
-
 .card {
   padding: 3em;
   display: flex;

@@ -1,71 +1,52 @@
 import './header.css'
-import { useContext } from 'react';
-import { ColourContext } from '../../context/colourContext';
 
-type Props = {
-    isSidebarOpen: boolean,
-    handleSidebar: () => void;
-}
-
-const PageHeader: React.FC<Props> = ({ isSidebarOpen, handleSidebar }) => {
-    const colourContext = useContext(ColourContext);
-    const colours = colourContext?.colours;
-
-    const renderPostInput: boolean = (colours !== undefined && colours.length > 0)
-
-
+const PageHeader: React.FC = () => {
     return (
-        <div className="header">
-            { renderPostInput  && 
-            <button className='m-4 self-center' onClick={handleSidebar}>
-                {isSidebarOpen ?
-                <svg className="w-[48px] h-[48px] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M20 14h-2.722L11 20.278a5.511 5.511 0 0 1-.9.722H20a1 1 0 0 0 1-1v-5a1 1 0 0 0-1-1ZM9 3H4a1 1 0 0 0-1 1v13.5a3.5 3.5 0 1 0 7 0V4a1 1 0 0 0-1-1ZM6.5 18.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2ZM19.132 7.9 15.6 4.368a1 1 0 0 0-1.414 0L12 6.55v9.9l7.132-7.132a1 1 0 0 0 0-1.418Z"/>
-                </svg>
-                :
-                <svg className="w-[48px] h-[48px] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-width="1" d="M7.111 20A3.111 3.111 0 0 1 4 16.889v-12C4 4.398 4.398 4 4.889 4h4.444a.89.89 0 0 1 .89.889v12A3.111 3.111 0 0 1 7.11 20Zm0 0h12a.889.889 0 0 0 .889-.889v-4.444a.889.889 0 0 0-.889-.89h-4.389a.889.889 0 0 0-.62.253l-3.767 3.665a.933.933 0 0 0-.146.185c-.868 1.433-1.581 1.858-3.078 2.12Zm0-3.556h.009m7.933-10.927 3.143 3.143a.889.889 0 0 1 0 1.257l-7.974 7.974v-8.8l3.574-3.574a.889.889 0 0 1 1.257 0Z"/>
-                </svg>
-                }
-            </button> }
-            <div className='w-full h-full flex items-center justify-center'>
-            { renderPostInput && <>
-            <svg viewBox="0 0 988 962" className='rainbow-box-header' stroke='currentColor' fill='currentColor'>
-                <g transform="matrix(1,0,0,1,-149.014,-1310.86)">
-                    <g transform="matrix(5.253,0,0,5.253,-3977.93,-767.176)">
-                        <g transform="matrix(1,0,0,1,330.206,-109.311)">
-                            <path d="M455.43,687.811L455.43,504.901L494.199,504.901L494.199,519.452L473.008,519.452L473.008,673.26L494.199,673.26L494.199,687.811L455.43,687.811Z"/>
-                        </g>
-                        <g transform="matrix(1,0,0,1,326.122,-48.8511)">
-                            <path d="M647.552,627.484L608.782,627.484L608.782,612.934L629.974,612.934L629.974,459.125L608.782,459.125L608.782,444.574L647.552,444.574L647.552,627.484Z"/>
+        <div className="header w-full justify-between">
+            <div className='h-auto w-auto flex rainbow-box-header gap-2 ml-4'>
+                <svg stroke='currentColor' fill='currentColor' width="auto" height="100%" viewBox="0 0 578 489" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" xmlSpace="preserve" style={{ fillRule: 'evenodd', clipRule: 'evenodd', strokeLinejoin: 'round', strokeMiterlimit: 2 }}>
+                    <g transform="matrix(1,0,0,1,-47.2441,-59.0551)">
+                        <g id="Logo">
+                            <g transform="matrix(2.39862,0,0,2.39862,-1071.02,-2031.85)">
+                                <path d="M503.273,1057.03L540.336,1057.03L540.336,1075.56L466.21,1075.56L466.21,871.712L540.336,871.712L540.336,890.244L503.273,890.244L503.273,1057.03Z" style={{ fillRule: 'nonzero' }}/>
+                                <path d="M670.057,1057.03L670.057,890.244L632.994,890.244L632.994,871.712L707.12,871.712L707.12,1075.56L632.994,1075.56L632.994,1057.03L670.057,1057.03Z" style={{ fillRule: 'nonzero' }}/>
+                            </g>
+                            <path d="M360.53,448.819L360.53,372.773L384.89,372.773L384.89,348.339L409.25,348.339L409.25,323.905L484.252,323.905L484.252,372.773L433.611,372.773L433.611,397.207L409.25,397.207L409.25,448.819L360.53,448.819Z"/>
+                            <path d="M165.648,472.133L165.648,281.533L190.008,281.533L190.008,232.664L214.368,232.664L214.368,208.23L238.729,208.23L238.729,183.796L263.089,183.796L263.089,159.362L311.809,159.362L311.809,134.928L506.691,134.928L506.691,183.796L311.809,183.796L311.809,208.23L287.449,208.23L287.449,232.664L263.089,232.664L263.089,257.099L238.729,257.099L238.729,281.533L214.368,281.533L214.368,472.133L165.648,472.133Z"/>
+                            <path d="M263.089,460.63L263.089,325.529L287.449,325.529L287.449,301.095L311.809,301.095L311.809,276.661L336.17,276.661L336.17,252.226L360.53,252.226L360.53,227.792L496.063,227.792L496.063,276.661L384.89,276.661L384.89,301.095L360.53,301.095L360.53,325.529L336.17,325.529L336.17,349.963L311.809,349.963L311.809,460.63L263.089,460.63Z"/>
                         </g>
                     </g>
-                    <g transform="matrix(1,0,0,1,-96.7222,129.854)">
-                        <path d="M1063.47,1427.58C766.507,1460.39 530.186,1695.68 495.795,1992.16L408.674,1992.16L408.674,1872.23C479.123,1609.3 688.73,1403.04 953.574,1337.37L1063.47,1337.37L1063.47,1427.58Z"/>
+                </svg>
+                <svg stroke='currentColor' fill='currentColor' width="auto" height="100%" viewBox="0 0 1027 489" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" xmlSpace="preserve" style={{ fillRule: 'evenodd', clipRule: 'evenodd', strokeLinejoin: 'round', strokeMiterlimit: 2 }}>
+                    <g transform="matrix(1,0,0,1,-673.99,-59.0551)">
+                        <g id="Text" transform="matrix(2.63848,0,0,2.63848,-556.096,-2240.94)">
+                            <rect x="466.21" y="871.712" width="37.063" height="185.315" style={{ fillRule: 'nonzero' }}/>
+                            <path d="M521.804,871.712L632.994,871.712L632.994,890.244L651.525,890.244L651.525,964.37L632.994,964.37L632.994,982.901L651.525,982.901L651.525,1057.03L614.462,1057.03L614.462,1001.43L558.867,1001.43L558.867,1057.03L521.804,1057.03L521.804,871.712ZM614.462,964.37L614.462,908.775L558.867,908.775L558.867,964.37L614.462,964.37Z" style={{ fillRule: 'nonzero' }}/>
+                            <rect x="670.057" y="871.712" width="37.063" height="185.315" style={{ fillRule: 'nonzero' }}/>
+                            <path d="M725.651,1001.43L762.714,1001.43L762.714,1019.96L818.309,1019.96L818.309,982.901L744.183,982.901L744.183,964.37L725.651,964.37L725.651,890.244L744.183,890.244L744.183,871.712L836.84,871.712L836.84,890.244L855.372,890.244L855.372,927.307L818.309,927.307L818.309,908.775L762.714,908.775L762.714,945.838L836.84,945.838L836.84,964.37L855.372,964.37L855.372,1038.5L836.84,1038.5L836.84,1057.03L744.183,1057.03L744.183,1038.5L725.651,1038.5L725.651,1001.43Z" style={{ fillRule: 'nonzero' }}/>
+                        </g>
                     </g>
-                    <g transform="matrix(0.827675,0,0,0.827675,98.8309,486.64)">
-                        <path d="M1048.62,1440.78C770.311,1478.78 549.429,1698.24 509.289,1975.86L377.272,1975.86C419.01,1625.92 698,1348.39 1048.62,1308.88L1048.62,1440.78Z"/>
-                    </g>
-                    <g transform="matrix(0.658174,0,0,0.658174,294.129,839.251)">
-                        <path d="M1021.94,1462.14C774.527,1508.07 578.919,1702.28 530.934,1948.97L363.915,1948.97C415.29,1611.3 683.551,1344.5 1021.94,1295.33L1021.94,1462.14Z"/>
-                    </g>
-                    <g transform="matrix(0.481375,0,0,0.481375,494.194,1202.06)">
-                        <path d="M339.822,1911.09C402.932,1588.07 658.258,1333.48 981.667,1271.47L981.667,1502.29C782.702,1556.16 625.68,1712.52 570.858,1911.09L339.822,1911.09Z"/>
-                    </g>
-                </g>
-            </svg>
-            <h1 className='m-3 self-center'>iris</h1>
-            </>
-            }
-            </div>
-            <button className='m-4 justify-end self-center'>
-            <svg className="w-[48px] h-[48px] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 24 24">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M10 11h2v5m-2 0h4m-2.592-8.5h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
-            </svg>
-            </button>
+                </svg>
 
+
+            </div>
+            <div className='justify-self-end self-center'>
+                <button className='m-4 self-center'>
+                    <p className='nav-links'>ABOUT</p>
+                </button>
+                <button className='m-4 self-center'>
+                    <p className='nav-links'>SUPPORT</p>
+                </button>
+            </div>
         </div>
     )
 }
 
 export default PageHeader;
+
+
+/*                     
+<svg className="w-[48px] h-[48px] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 24 24">
+    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M10 11h2v5m-2 0h4m-2.592-8.5h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
+</svg>
+*/
