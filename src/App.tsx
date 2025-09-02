@@ -1,5 +1,5 @@
 import './App.css'
-import { ColourProvider } from './context/colourContext';
+import { ColourProvider } from './context/colourProvider';
 import PageHeader from './components/header/header';
 import MainPage from './components/pages/main';
 

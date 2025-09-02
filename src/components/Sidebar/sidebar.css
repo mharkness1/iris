@@ -18,6 +18,17 @@
     font-size: 1.75rem;
 }
 
+.sidebar.open {
+    left: 0
+}
+.sidebar.closed {
+    left: 15vw;
+}
+.ParamToggleButton {
+    border: 2px solid var(--color-secondary);
+    border-bottom: 4px solid var(--color-secondary);
+    border-right: 4px solid var(--color-secondary);
+}
 .add-colour-button {
     display: flex;
     flex-direction: column;
