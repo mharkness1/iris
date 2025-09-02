@@ -18,9 +18,6 @@ const ColourToggleButton: React.FC<Props> = ({ handler }) => {
             style={{ stroke: "currentColor", fill: "currentColor", fillRule: "evenodd", clipRule: "evenodd", strokeLinejoin: "round", strokeMiterlimit: 2 }}
             >
             <g transform="matrix(1,0,0,1,-497.145,-1716.17)">
-                <g id="Text"></g>
-                <g id="Logo"></g>
-                <g id="Sun"></g>
                 <g transform="matrix(1,0,0,1,-10.729,2.75591)">
                 <path d="M507.874,1766.54l0,-33.046l7.12,-0l-0,-5.906l8.267,0l0,-8.267l9.416,-0l0,-5.906l18.931,-0l-0,0.024l15.387,0l0,3.543l10.63,0l0,5.882l10.647,-0l-0,7.147l9.465,-0l-0,18.873l-18.931,0l0,9.437l10.63,0l0,9.425l4.741,-0l0,18.873l-9.465,0l-0,9.437l-17.717,-0l0,0.012l-18.93,-0l-0,-4.7l-12.993,-0l0,-9.449l-9.465,-0l0,-8.292l-9.465,0l-0,-7.087l-8.268,0Zm62.631,-3.519l-10.629,0l-0,4.737l-5.873,-0l0,9.437l11.778,-0l0,-0.013l9.465,0l0,-8.255l-4.741,-0l0,-5.906Z" />
                 </g>

@@ -1,46 +1,27 @@
 import { useContext } from "react";
 import { ColourContext } from "../../context/colourContext";
 import '../../App.css'
-import { toCssString } from "iris-colour";
 import PalettePage from "../palettes/palette_block";
 
 const Populated: React.FC = () => {
     const colourContext = useContext(ColourContext);
     const primaryColour = colourContext?.primaryColour;
-    const setPrimaryColour = colourContext?.setPrimaryColour;
-    
     if (primaryColour) {
         return (
-        <div className="main-section">
-            <div className="flex flex-row items-center justify-between">
-                <div className="self-start flex flex-row items-center">
-                    <div className="w-6 h-6 rounded-md mx-3" style={{background: toCssString(primaryColour)}}></div>
-                        <p className="text-2xl"> Colour: {primaryColour.name}</p>
+            <div className="main-section">
+                <div className="flex flex-row items-center justify-between">
+                    <div className="self-start flex flex-row items-center gap-6">
+                        <p className="text-[2.5rem] pixel-font">#{primaryColour.hex.toUpperCase()}</p>
+                        <button><p className="text-[2rem] pixel-font hover:underline decoration-4">Fixed</p></button>
+                        <button><p className="text-[2rem] pixel-font hover:underline decoration-4">Variable</p></button>
+                        <button><p className="text-[2rem] pixel-font hover:underline decoration-4">Spectrum</p></button>
+                        <button><p className="text-[2rem] pixel-font hover:underline decoration-4">All</p></button>
                     </div>
-                <button className="flex flex-row items-center hover:text-gray-400" onClick={() => setPrimaryColour && setPrimaryColour(null)}>
-                    <p className="mx-2">Clear Colour</p>
-                    <svg className="w-[36px] h-[36px] text-white hover:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.3" d="m15 9-6 6m0-6 6 6m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
-                    </svg>
-                </button>
+                </div>
+                <PalettePage />
             </div>
-            <PalettePage />
-        </div>
         )
-    } else {
-    return (
-        <div className="main-section justify-center">
-            <div className="self-center justify-self-center placeholder">
-                <h1>Select a Colour</h1>
-                <h2 className=" text-3xl">from your swatch      
-                    <svg className="w-[36px] h-[36px] inline" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 24 24">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-width="1" d="M7.111 20A3.111 3.111 0 0 1 4 16.889v-12C4 4.398 4.398 4 4.889 4h4.444a.89.89 0 0 1 .89.889v12A3.111 3.111 0 0 1 7.11 20Zm0 0h12a.889.889 0 0 0 .889-.889v-4.444a.889.889 0 0 0-.889-.89h-4.389a.889.889 0 0 0-.62.253l-3.767 3.665a.933.933 0 0 0-.146.185c-.868 1.433-1.581 1.858-3.078 2.12Zm0-3.556h.009m7.933-10.927 3.143 3.143a.889.889 0 0 1 0 1.257l-7.974 7.974v-8.8l3.574-3.574a.889.889 0 0 1 1.257 0Z"/>
-                    </svg>
-                </h2>
-            </div>
-        </div>
-  )
-}
+    }
 };
 
 export default Populated;

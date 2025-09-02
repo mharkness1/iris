@@ -11,7 +11,7 @@ const ParamSidebar: React.FC = () => {
 
     return (
         <div className='sidebar-wrapper h-full'>
-            <div className={`sidebar h-full left-0 ${paramSidebar ? 'w-96 border-2 border-r-8 border-b-8 mr-2 open' : 'w-0 border-0 border-r-0 border-b-0 mr-1 closed'}`}>
+            <div className={`sidebar h-full left-0 ${paramSidebar ? 'w-80 border-2 border-r-8 border-b-8 mr-2 open' : 'w-0 border-0 border-r-0 border-b-0 mr-1 closed'}`}>
                 <div className="text-center">
                     <p>&lt;Params /&gt;</p>
                 </div>

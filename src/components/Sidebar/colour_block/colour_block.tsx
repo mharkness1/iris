@@ -14,23 +14,26 @@ const ColourBlock: React.FC<Props> = ({ colour }) => {
     const colourContext = useContext(ColourContext)
     const setPrimaryColour = colourContext?.setPrimaryColour
 
+    const cssColour = toCssString(colour)
+    const isPrimaryColour = colourContext?.primaryColour?.hex === colour.hex;
+
     const handlePrimaryColour = (col: Colour) => {
         if (setPrimaryColour && colourContext?.primaryColour?.hex !== colour.hex) {
             setPrimaryColour(col);
         }
+        if (setPrimaryColour && isPrimaryColour) {
+            setPrimaryColour(null);
+        }
     }
     
-    const cssColour = toCssString(colour)
-    const isPrimaryColour = colourContext?.primaryColour?.hex === colour.hex;
+
 
     return (
         <div className={'colour-block m-3'} style={{ background: cssColour,  border: isPrimaryColour ? '2px solid white' : '2px solid ' + cssColour}} onClick={() => handlePrimaryColour(colour)}>
-            <div className='flex flex-row justify-between w-auto'>
+            <div className='text-center w-full self-center'>
+                <p style={{ color: useWhite ? "#ffffff" : "#000000" }} className='text-sm'>#{colour.hex.toUpperCase()}</p>
+            </div>
             <RemoveColourButton col={colour} />
-            </div>
-            <div className='flex flex-row justify-between'>
-                <p style={{ color: useWhite ? "#ffffff" : "#000000" }} className='text-sm'>#{colour.hex}</p>
-            </div>
         </div>
     )
 }

@@ -16,8 +16,7 @@ const ColourSquare: React.FC<Props> = ({ colour }) => {
     
     return (
         <div className={'colour-square'} style={{ background: cssColour,  border: isPrimaryColour ? '1px solid white' : '1px solid ' + cssColour}}>
-            <p style={{color: useWhite ? "#ffffff" : "#000000"}} className="text-sm">#{colour.hex}</p>
-            <p style={{ color: useWhite ? "#ffffff" : "#000000" }} className='text-sm overflow-hidden'>{colour.name}</p>
+            <p style={{color: useWhite ? "#ffffff" : "#000000"}} className="text-center text-[1.5rem]">#{colour.hex.toUpperCase()}</p>
         </div>
     )
 }

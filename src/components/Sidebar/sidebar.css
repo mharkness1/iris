@@ -45,6 +45,9 @@
 } svg {
     color: var(--color-secondary)
 }
+.ColourToggleButton:hover {
+    background-color: var(--color-hover);
+}
 .add-colour-button {
     display: flex;
     flex-direction: column;

@@ -7,6 +7,7 @@
 
 @theme {
   --color-background: #FCFBFF;
+  --color-hover: #E2E1E5;
   --color-secondary: #121212;
   --color-mid: #858585;
   --color-accent-plum: #5c1848;
@@ -14,6 +15,7 @@
 
 .dark {
   --color-background: #121212;
+  --color-hover: #2F2F2F;
   --color-secondary: #FCFBFF;
   --color-mid: #858585;
   --color-accent-plum: #5c1848;
@@ -29,6 +31,8 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  scrollbar-color: var(--color-secondary) var(--color-background);
 }
 
 body {

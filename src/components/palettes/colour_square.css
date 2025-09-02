@@ -1,11 +1,11 @@
 .colour-square {
     height: 100px;
-    min-width: 120px;
+    min-width: 10px;
     width: auto;
     max-width: 160px;
     padding: 10px;
     margin-top: 1rem;
-    margin-inline: 0.2rem;
+    
     display: flex;
     flex-direction: column;
     justify-content: space-between;

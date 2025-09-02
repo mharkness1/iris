@@ -1,24 +1,29 @@
 .palette-page {
     overflow-y: auto;
-    overflow-x: auto;
+    overflow-x: hidden;
     margin-top: 0.25rem; 
-    height: 100%;
-    width: 100%;
     display: flex;
     flex-direction: column;
+    padding-inline: 0.5rem;
 }
 .palette-row {
+    font-family: "Jersey";
+    font-size: 1.5rem;
     margin-top: 1rem;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
 }
 .palette-block {
     display: flex;
     flex-direction: column;
-    flex-grow: 1;
+    flex: 1 1 0;
     justify-content: space-between;
-    margin-inline: 1rem;
+}
+.complement-block {
+  flex: 0.5 1 0;  /* half the width of others */
 }
 .palette {
     display: flex;

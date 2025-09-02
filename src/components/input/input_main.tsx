@@ -31,8 +31,29 @@ const useColourTypeInput = () => {
 const AddButton = () => {
     return (
         <button type="submit" id="button_add">
-            <svg className="w-10 h-10 text-gray-800 dark:text-white dark:hover:fill-white dark:hover:text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M12 7.757v8.486M7.757 12h8.486M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
+            <svg
+            className="secondary-col h-10 w-10 ml-6 hover:bg-hover"
+            viewBox="0 0 625 625"
+            xmlns="http://www.w3.org/2000/svg"
+            style={{
+                fillRule: "evenodd",
+                clipRule: "evenodd",
+                strokeLinejoin: "round",
+                strokeMiterlimit: 2,
+                stroke: "currentcolor",
+                fill: "currentcolor",
+            }}
+            >
+            <g transform="matrix(1,0,0,1,-992.126,-1708.1)">
+                <g transform="matrix(1,0,0,1,354.331,-29.467)">
+                    <g transform="matrix(1.32215,0,0,1.32215,-611.484,-760.993)">
+                        <path d="M1417.32,1889.76l-0,472.441l-472.441,-0l-0,-472.441l472.441,-0Zm-61.515,30.203l-375.193,0l-0,375.193l375.193,0l-0,-375.193Z"/>
+                    </g>
+                    <g transform="matrix(1,0,0,1,-232.021,-72.0183)">
+                        <path d="M1123.08,2119.82l-64.285,-0l-0,-64.286l64.285,-0l0,-64.286l64.286,0l0,64.286l64.286,-0l-0,64.286l-64.286,-0l0,64.285l-64.286,0l0,-64.285Z" fillRule="nonzero"/>
+                    </g>
+                </g>
+            </g>
             </svg>
         </button>
 
@@ -42,7 +63,7 @@ const AddButton = () => {
 const RandomButton = ({ onClick }: { onClick?: () => void }) => {
     return (
         <button type="button" id="random_button" onClick={onClick}>
-            <svg className="w-6 h-6 secondary-col" width="100%" height="100%" viewBox="0 0 284 284" version="1.1" style={{
+            <svg className="w-6 h-6 secondary-col mr-6" width="100%" height="100%" viewBox="0 0 284 284" version="1.1" style={{
                 fillRule: "evenodd",
                 clipRule: "evenodd",
                 strokeLinejoin: "round",

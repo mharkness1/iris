@@ -10,8 +10,8 @@ const PaletteRender: React.FC<Props> = ({ palette }) => {
 
     if (palette.type === "Complementary") {
         return (
-        <div className='palette-block'>
-            <div>{palette.type}</div>
+        <div className='palette-block complement-block'>
+            <div>{palette.type.toUpperCase()}</div>
             <div className='palette'>
                 <ColourSquare colour={palette.colours[1]}/>
             </div>
@@ -20,7 +20,7 @@ const PaletteRender: React.FC<Props> = ({ palette }) => {
     } else {
         return (
         <div className='palette-block'>
-            <div>{palette.type}</div>
+            <div>{palette.type.toUpperCase()}</div>
             <div className='palette'>
                 {
                     palette.colours.map((colour, index ) => 
