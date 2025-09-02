@@ -11,8 +11,29 @@ import RgbInput from '../../input/rgb_input'
 const AddButton = () => {
     return (
         <button id="sidebar-button-add" className='self-end' type='submit'>
-            <svg className="w-5 h-5 text-gray-800 dark:text-white dark:hover:fill-white dark:hover:text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M12 7.757v8.486M7.757 12h8.486M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
+            <svg
+            className="secondary-col h-6 w-6 hover:bg-hover"
+            viewBox="0 0 625 625"
+            xmlns="http://www.w3.org/2000/svg"
+            style={{
+                fillRule: "evenodd",
+                clipRule: "evenodd",
+                strokeLinejoin: "round",
+                strokeMiterlimit: 2,
+                stroke: "currentcolor",
+                fill: "currentcolor",
+            }}
+            >
+            <g transform="matrix(1,0,0,1,-992.126,-1708.1)">
+                <g transform="matrix(1,0,0,1,354.331,-29.467)">
+                    <g transform="matrix(1.32215,0,0,1.32215,-611.484,-760.993)">
+                        <path d="M1417.32,1889.76l-0,472.441l-472.441,-0l-0,-472.441l472.441,-0Zm-61.515,30.203l-375.193,0l-0,375.193l375.193,0l-0,-375.193Z"/>
+                    </g>
+                    <g transform="matrix(1,0,0,1,-232.021,-72.0183)">
+                        <path d="M1123.08,2119.82l-64.285,-0l-0,-64.286l64.285,-0l0,-64.286l64.286,0l0,64.286l64.286,-0l-0,64.286l-64.286,-0l0,64.285l-64.286,0l0,-64.285Z" fillRule="nonzero"/>
+                    </g>
+                </g>
+            </g>
             </svg>
         </button>
     )
@@ -21,8 +42,22 @@ const AddButton = () => {
 const RandomButton = ({ onClick }: { onClick?: () => void }) => {
     return (
         <button type="button" id="random_button" onClick={onClick}>
-            <svg className="w-5 h-5 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-               <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M13.484 9.166 15 7h5m0 0-3-3m3 3-3 3M4 17h4l1.577-2.253M4 7h4l7 10h5m0 0-3 3m3-3-3-3"/>
+            <svg className="w-4 h-4 secondary-col" width="100%" height="100%" viewBox="0 0 284 284" version="1.1" style={{
+                fillRule: "evenodd",
+                clipRule: "evenodd",
+                strokeLinejoin: "round",
+                strokeMiterlimit: 2,
+                stroke: "currentcolor",
+                fill: "currentcolor",
+                }}
+                >
+                <g transform="matrix(1,0,0,1,-897.638,-1866.14)">
+                    <g>
+                        <path d="M1074.8,2043.31l35.433,0l0,17.717l17.717,-0l-0,17.716l17.716,0l0,-35.433l35.433,0l0,106.299l-106.299,0l0,-35.433l35.433,0l0,-17.716l-17.716,-0l-0,-17.717l-17.717,0l0,-35.433Z"/>
+                        <path d="M915.354,1866.14l17.717,-0l-0,17.716l17.716,0l0,17.717l17.717,-0l-0,17.716l17.716,0l0,17.717l17.717,-0l0,35.433l-35.433,-0l-0,-17.717l-17.717,0l0,-17.716l-17.716,-0l-0,-17.717l-17.717,0l0,-17.716l-17.716,-0l-0,-17.717l17.716,0l0,-17.716Z"/>
+                        <path d="M1092.52,1937.01l-0,-17.717l17.716,0l0,-17.716l-35.433,-0l0,-35.433l106.299,-0l0,106.299l-35.433,-0l0,-35.433l-17.716,-0l-0,17.716l-17.717,0l0,17.717l-17.716,-0l-0,17.716l-17.717,0l0,17.717l-17.716,0l-0,17.717l-17.717,-0l0,17.716l-17.716,0l-0,17.717l-17.717,-0l0,17.716l-17.717,0l0,17.717l-17.716,-0l-0,17.716l-17.717,0l0,17.717l-17.716,-0l-0,17.716l-17.717,0l0,-17.716l-17.716,-0l-0,-17.717l17.716,0l0,-17.716l17.717,-0l-0,-17.717l17.716,0l0,-17.716l17.717,-0l-0,-17.717l17.716,0l0,-17.716l17.717,-0l0,-17.717l17.717,0l-0,-17.717l17.716,0l0,-17.716l17.717,-0l-0,-17.717l17.716,0l0,-17.716l17.717,-0Z"/>
+                    </g>
+                </g>
             </svg>
         </button>
     )
@@ -40,7 +75,7 @@ const useColourTypeInput = () => {
     setColourType,
     colourType: colourType,
     renderTypeInput:(
-        <select className="text-sm" name="selectedFormat" onChange={onOptionChange} defaultValue="hex">
+        <select className="text-[1.5rem]" name="selectedFormat" onChange={onOptionChange} defaultValue="hex">
             <option value="hex">hex</option>
             <option value="rgb">rgb</option>
             <option value="hsl">hsl</option>
@@ -165,8 +200,29 @@ const AddColourSidebar: React.FC = () => {
         <>
         { !isAddProcess &&
         <button className='add-colour-button items-center' onClick={handleAddSidebar}>
-            <svg className="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7 7V5"/>
+            <svg
+            className="secondary-col h-10 w-10 hover:bg-hover"
+            viewBox="0 0 625 625"
+            xmlns="http://www.w3.org/2000/svg"
+            style={{
+                fillRule: "evenodd",
+                clipRule: "evenodd",
+                strokeLinejoin: "round",
+                strokeMiterlimit: 2,
+                stroke: "currentcolor",
+                fill: "currentcolor",
+            }}
+            >
+            <g transform="matrix(1,0,0,1,-992.126,-1708.1)">
+                <g transform="matrix(1,0,0,1,354.331,-29.467)">
+                    <g transform="matrix(1.32215,0,0,1.32215,-611.484,-760.993)">
+                        <path d="M1417.32,1889.76l-0,472.441l-472.441,-0l-0,-472.441l472.441,-0Zm-61.515,30.203l-375.193,0l-0,375.193l375.193,0l-0,-375.193Z"/>
+                    </g>
+                    <g transform="matrix(1,0,0,1,-232.021,-72.0183)">
+                        <path d="M1123.08,2119.82l-64.285,-0l-0,-64.286l64.285,-0l0,-64.286l64.286,0l0,64.286l64.286,-0l-0,64.286l-64.286,-0l0,64.285l-64.286,0l0,-64.285Z" fillRule="nonzero"/>
+                    </g>
+                </g>
+            </g>
             </svg>
         </button>
         }
@@ -174,18 +230,18 @@ const AddColourSidebar: React.FC = () => {
             <form onSubmit={afterSubmission} className='add-colour-card m-3'>
                 <div className='flex flex-row justify-between'>
                     <RandomButton onClick={handleAllRandom} />
+                    { renderTypeInput }
                     <AddButton />
                 </div>
                 <div className='flex flex-row items-center justify-between mx-2 pb-1'>
-                    { renderTypeInput }
                     {rgb && 
                     <RgbInput
                     values={rgbValues}
                     onBlurField={handleRGBBlur}
                     onChange={handleRGBChange}
-                    containerStyle = { {display: 'flex', gap: '0.4rem', fontSize: '1rem', width:'75%'}}
-                    inputWrapperStyle = {{ display: 'flex', alignItems: 'center', marginInline: 'auto', gap:'0.1rem' }}
-                    inputStyle = { { width:'90%', alignItems:'center', fontSize: '0.875rem', paddingInline:'0.3rem', flexGrow:'1' }}
+                    containerStyle = { {display: 'flex', gap: '0.1rem', fontSize: '1.8rem', width:'100%'}}
+                    inputWrapperStyle = {{ display: 'flex', alignItems: 'center', marginInline: 'auto', gap:'0rem' }}
+                    inputStyle = { { width:'100%', alignItems:'center', fontSize: '1.8rem', paddingInline:'0.3rem', flexGrow:'1' }}
                     />
                     }
                     {hsl &&
@@ -193,17 +249,17 @@ const AddColourSidebar: React.FC = () => {
                     values={hslValues}
                     onBlurField={handleHSLBlur}
                     onChange={handleHSLChange}                     
-                    containerStyle = { {display: 'flex', gap: '0.3rem', fontSize: '1rem', width:'90%'}}
-                    inputWrapperStyle = {{ display: 'flex', alignItems: 'center', width:'100%', gap: '0.3rem', flexGrow: '1'}}
-                    inputStyle = { {width: '100%', fontSize: '0.875rem', marginInlineEnd:'0.1rem'}}/>
+                    containerStyle = { {display: 'flex', gap: '0.05rem', fontSize: '1.5rem', width:'100%'}}
+                    inputWrapperStyle = {{ display: 'flex', alignItems: 'center', width:'100%', gap: '0.05rem', flexGrow: '1'}}
+                    inputStyle = { {width: '100%', fontSize: '1.6rem'}}/>
                     }
                     {hex &&
                     <HexInput
                     values={hexValues}
                     onChange={handleHexChange}                     
-                    containerStyle = { {display: 'flex' ,gap: '0', fontSize: '1rem', width: '55%', alignItems: "center"} }
-                    inputWrapperStyle = {{ display: 'flex', alignItems: 'center', justifyItems: 'center', justifyContent:'center', width:'60%' }}
-                    inputStyle = { {width: '75%', fontSize: '0.875rem' }}/>
+                    containerStyle = { {display: 'flex' ,gap: '0rem', fontSize: '1.7rem', width: 'auto', alignItems: "center", marginLeft: "1.9rem"} }
+                    inputWrapperStyle = {{ display: 'flex', alignItems: 'center', justifyItems: 'center', justifyContent:'center', width:'auto' }}
+                    inputStyle = { {width: '80%', fontSize: '1.7rem' }}/>
                     }
                 </div>
             </form>

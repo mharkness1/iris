@@ -20,14 +20,14 @@
     background-color: var(--color-background);
 }
 
-.rainbow-box-header {
+.rainbow-box-header svg {
   color: var(--color-secondary);                 /* default fill/stroke */
   transition: color 1s ease, 
               filter 1s ease;   /* ensures graceful fade back */
 }
 
 /* On hover, cycle the hue smoothly */
-.rainbow-box-header:hover {
+.rainbow-box-header:hover svg {
   color: red; /* base color for cycling */
   animation: rainbow-cycle 5s linear infinite;
 }

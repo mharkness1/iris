@@ -28,8 +28,6 @@ const PageHeader: React.FC = () => {
                         </g>
                     </g>
                 </svg>
-
-
             </div>
             <div className='justify-self-end self-center pr-4 flex'>
                 <button className='m-2 p-3 self-center nav-links'>

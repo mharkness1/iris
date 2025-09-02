@@ -1,6 +1,6 @@
 .palette-page {
     overflow-y: auto;
-    overflow-x: hidden;
+    overflow-x: auto;
     margin-top: 0.25rem; 
     display: flex;
     flex-direction: column;
@@ -23,7 +23,7 @@
     justify-content: space-between;
 }
 .complement-block {
-  flex: 0.5 1 0;  /* half the width of others */
+  flex: 0.33 1 0;  /* half the width of others */
 }
 .palette {
     display: flex;
