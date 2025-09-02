@@ -1,33 +1,49 @@
+.sidebar-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-content: flex-start;
+    margin: 1rem;
+}
 .sidebar {
     left: 0;
     height: 100%;
-    min-width: 15vw;
-    transition: left 1s ease-in-out;
     display: flex;
     flex-direction: column;
-    margin: 1rem;
+    /*
     border: 2px solid;
     border-right: 8px solid;
     border-bottom: 8px solid;
+    */
     overflow-y:auto;
     overflow-x: hidden;
-    max-width: 23vw;
     font-family: "Jersey";
     color: var(--color-secondary);
-} .sidebar p {
-    font-size: 1.75rem;
+}
+/* Opening: border first, then width grows */
+.sidebar.open {
+  transition: border-width 0.2s ease, width 0.5s ease 0.2s;
 }
 
-.sidebar.open {
-    left: 0
-}
+/* Closing: width shrinks first, then border disappears */
 .sidebar.closed {
-    left: 15vw;
+  transition: width 0.5s ease, border-width 0.2s ease 0.5s;
+}
+.sidebar p {
+    font-size: 1.75rem;
+    white-space: nowrap;
+    overflow: hidden;
 }
 .ParamToggleButton {
     border: 2px solid var(--color-secondary);
     border-bottom: 4px solid var(--color-secondary);
     border-right: 4px solid var(--color-secondary);
+}
+.ColourToggleButton {
+    border: 2px solid var(--color-secondary);
+    border-bottom: 4px solid var(--color-secondary);
+    border-right: 4px solid var(--color-secondary);
+} svg {
+    color: var(--color-secondary)
 }
 .add-colour-button {
     display: flex;

@@ -1,9 +1,13 @@
 import React from "react";
 
-const ParamToggleButton: React.FC = () => {
+type Props = {
+    handler: () => void;
+}
+
+const ParamToggleButton: React.FC<Props> = ({ handler }) => {
     return(
-        <button className="w-10 h-10 ParamToggleButton">
-            <p className="secondary-col pixel-font text-4xl">P</p>
+        <button className="w-12 h-12 ParamToggleButton" onClick={handler}>
+            <p className="secondary-col pixel-font text-4xl">@</p>
         </button>
     )
 }

@@ -31,8 +31,8 @@ const RandomButton = ({ onClick }: { onClick?: () => void }) => {
 const useColourTypeInput = () => {
     const [colourType, setColourType] = useState<ColourFormat>("hex");
 
-    const onOptionChange = (event: any) => {
-        setColourType(event.target.value);
+    const onOptionChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+        setColourType(event.target.value as ColourFormat);
         console.log("type selected = ", event.target.value);
     };
 
@@ -58,9 +58,9 @@ const AddColourSidebar: React.FC = () => {
     const [hexValues, setHexValues] = useState<string>('');
     const colContext = useContext(ColourContext)
     const { saveColour, incrementer } = colContext as ColourContextType
-    let rgb: boolean = (colourType === 'rgb')
-    let hex: boolean = (colourType === 'hex')
-    let hsl: boolean = (colourType === 'hsl')
+    const rgb: boolean = (colourType === 'rgb')
+    const hex: boolean = (colourType === 'hex')
+    const hsl: boolean = (colourType === 'hsl')
 
     const handleAddSidebar = () => {
         setAddProcess(true)
@@ -122,18 +122,36 @@ const AddColourSidebar: React.FC = () => {
             setRgbValues(updated);
         };
         
-        const afterSubmission = (e: any) => {
+        const afterSubmission = (e: React.FormEvent<HTMLFormElement>) => {
             e.preventDefault();
-            let colInput: string = '';
-            if (colourType === 'hex') {
-                colInput = e.target[3].value;
-            } else if (colourType === 'rgb'){
-                colInput = '(' + e.target[3].value + ',' + e.target[4].value + ',' + e.target[5].value + ')';
+
+            const form = e.currentTarget;
+            const elements = form.elements as HTMLFormControlsCollection;
+
+            let colInput = "";
+            if (colourType === "hex") {
+                colInput = (elements[3] as HTMLInputElement).value;
+            } else if (colourType === "rgb") {
+                colInput =
+                "(" +
+                (elements[3] as HTMLInputElement).value +
+                "," +
+                (elements[4] as HTMLInputElement).value +
+                "," +
+                (elements[5] as HTMLInputElement).value +
+                ")";
             } else {
-                colInput = '(' + e.target[3].value + ',' + e.target[4].value + '%,' + e.target[5].value + '%)';
-            };
+                colInput =
+                "(" +
+                (elements[3] as HTMLInputElement).value +
+                "," +
+                (elements[4] as HTMLInputElement).value +
+                "%," +
+                (elements[5] as HTMLInputElement).value +
+                "%)";
+            }
             console.log(colInput)
-            let col = createColour(InputParser(colInput, colourType as string) as ColourModes, String(incrementer), colourType as string);
+            const col = createColour(InputParser(colInput, colourType as string) as ColourModes, String(incrementer), colourType as string);
             saveColour(col);
             setAddProcess(false);
             setRgbValues(['','','']);
