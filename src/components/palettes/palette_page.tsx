@@ -1,10 +1,10 @@
 import { useContext } from "react";
 import { ColourContext } from "../../context/colourContext";
 import './palette.css'
-import PaletteRender from "./palette";
-import { genAnalagousPalette, genComplement, genMonochromePalette, genQuadraticPalette, genShades, genTetradicPalette, genTriadicPalette, genTints, genTones } from "iris-colour";
+import { genAnalagousPalette, genComplement, genMonochromePalette, genQuadraticPalette, genShades, genTetradicPalette, genTriadicPalette, genTints, genTones, genSpectrumPalette, blendColours } from "iris-colour";
 import type { PaletteDisplay } from "../pages/populated";
 import { useParamState } from "../../hooks/ParamState";
+import PaletteRow from "./palette_row";
 
 type Props = {
     paletteDisplay: PaletteDisplay
@@ -32,32 +32,22 @@ const PalettePage: React.FC<Props> = ({ paletteDisplay }) => {
             <div className="palette-page">
                 {(paletteDisplay === "fixed" || paletteDisplay === "all") && (
                 <>
-                <div className="palette-row">
-                    <PaletteRender palette={ComplementPalette} />
-                    <PaletteRender palette={AnalagousPalette} />
-                    <PaletteRender palette={TriadicPalette} />
-                </div>
-                <div className="palette-row">
-                    <PaletteRender palette={TetraticPalette} />
-                    <PaletteRender palette={QuadraticPalette} />
-                </div>
+                    <PaletteRow palettes={[ComplementPalette, AnalagousPalette, TriadicPalette]} />
+                    <PaletteRow palettes={[TetraticPalette, QuadraticPalette]} />
                 </>
                 )}
                 {(paletteDisplay === "variable" || paletteDisplay === "all") && (
                 <>
-                <div className="palette-row">
-                    <PaletteRender palette={MonochromePalette} />
-                </div>
-                <div className="palette-row">
-                    <PaletteRender palette={Shades} />
-                </div>
-                <div className="palette-row">
-                    <PaletteRender palette={Tints} />
-                </div>
-                <div className="palette-row">
-                    <PaletteRender palette={Tones} />
-                </div>
+                    <PaletteRow palettes={[MonochromePalette]} />
+                    <PaletteRow palettes={[Shades]} />
+                    <PaletteRow palettes={[Tints]} />
+                    <PaletteRow palettes={[Tones]} />
                 </>
+                )}
+                {(paletteDisplay === "spectrum" || paletteDisplay === "all") && (
+                    <>
+                    
+                    </>
                 )}
             </div>
     )

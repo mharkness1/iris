@@ -14,6 +14,7 @@ export type ParamConfig = {
   default: number;
   min: number;
   max: number;
+  description: string;
 };
 
 export const paramConfigs: Record<string, ParamConfig> = {
@@ -22,35 +23,41 @@ export const paramConfigs: Record<string, ParamConfig> = {
         default: 30,
         min: 10,
         max: 89,
+        description: ""
     },
     whiteTolerance: {
         label: "White Tolerance",
         default: 15,
         min: 0,
         max: 30,
+        description: ""
     },
     grayTolerance: {
         label: "Gray Tolerance",
         default: 15,
         min: 0,
         max: 30,
+        description: ""
     },
     blackTolerance: {
         label: "Black Tolerance",
         default: 15,
         min: 0,
         max: 30,
+        description: ""
     },
     maxSize: {
         label: "Max Size",
         default: 6,
         min: 3,
         max: 15,
+        description: ""
     },
     stepSize: {
         label: "Step Size - Value",
         default: 10,
         min: 5,
         max: 20,
+        description: ""
     },
 }

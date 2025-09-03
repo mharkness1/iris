@@ -1,11 +1,13 @@
-import { useContext } from "react";
+import { useState, useContext, useRef, useEffect } from "react";
 import { ColourContext, type ColourContextType } from "../../context/colourContext";
 import { toCssString, type Colour } from "iris-colour";
 import './colour_square.css'
 
 type Props = {
-    colour: Colour,
-}
+  colour: Colour;
+  expanded: boolean;
+  onClick: () => void;
+};
 
 const PaletteAddButton: React.FC<{colour: Colour}> = ( {colour} ) => {
     const colourContext = useContext(ColourContext)
@@ -47,17 +49,62 @@ const PaletteAddButton: React.FC<{colour: Colour}> = ( {colour} ) => {
     )
 }
 
-const ColourSquare: React.FC<Props> = ({ colour }) => {
+const ColourSquare: React.FC<Props> = ({ colour, expanded, onClick }) => {
+    const squareRef = useRef<HTMLDivElement | null>(null);
+    const [measuredWidth, setMeasuredWidth] = useState(0);
+
+    const MIN_WIDTH_FOR_INFO = 90;
+
     const useWhite = (colour.luminance < 0.3 );
     const colourContext = useContext(ColourContext)
     const cssColour = toCssString(colour)
     const isPrimaryColour: boolean = (colourContext?.primaryColour?.rgb === colour?.rgb)
 
-    
+    const inTransitionRef = useRef(false);
+
+    const handleClick = () => {
+        inTransitionRef.current = true;
+        onClick(); // toggle expanded
+    };
+
+    const handleTransitionEnd = () => {
+        inTransitionRef.current = false;
+    };
+
+    useEffect(() => {
+        const checkWidth = () => {
+            if(!squareRef.current || inTransitionRef.current) return;
+            const width = squareRef.current.offsetWidth;
+            if (!expanded) {
+                setMeasuredWidth(width)
+            }
+        }
+
+        requestAnimationFrame(() => requestAnimationFrame(checkWidth));
+
+        const observer = new ResizeObserver(checkWidth);
+        if (squareRef.current) observer.observe(squareRef.current);
+
+        window.addEventListener("resize", checkWidth);
+
+        return () => {
+            observer.disconnect();
+            window.removeEventListener("resize", checkWidth);
+        };
+    }, [expanded]);
+
+    const naturallyWide = measuredWidth >= MIN_WIDTH_FOR_INFO;
+    const shouldExpand = expanded && !naturallyWide;
+    const showInfo = naturallyWide || expanded;
+
     return (
-        <div className={'colour-square'} style={{ background: cssColour}}>
-            <p style={{color: useWhite ? "#ffffff" : "#000000", textDecorationThickness: "4px", textDecoration: isPrimaryColour ? "underline" : "none" }} className="text-center text-[1.5rem]">#{colour.hex.toUpperCase()}</p>
-            <PaletteAddButton colour={colour}/>
+        <div ref={squareRef} className={`${shouldExpand ? "colour-square expanded" : "colour-square collapsed"}`} style={{ background: cssColour}} onClick={handleClick} onTransitionEnd={handleTransitionEnd} >
+            {showInfo && 
+                <div className="flex flex-col justify-between overflow-hidden absolute">
+                    <p style={{color: useWhite ? "#ffffff" : "#000000", textDecorationThickness: "4px", textDecoration: isPrimaryColour ? "underline" : "none" }} className="text-center text-[1.5rem]">#{colour.hex.toUpperCase()}</p>
+                    <PaletteAddButton colour={colour}/>
+                </div>
+            }
         </div>
     )
 }

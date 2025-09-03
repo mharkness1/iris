@@ -1,36 +1,51 @@
-import './palette.css'
-import { type Palette } from 'iris-colour'
-import ColourSquare from './colour_square'
+import { useState } from "react";
+import ColourSquare from "./colour_square";
+import type { Palette } from "iris-colour";
 
 type Props = {
-    palette: Palette
-}
+  palette: Palette;
+};
 
 const PaletteRender: React.FC<Props> = ({ palette }) => {
+  const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
 
-    if (palette.type === "Complementary") {
-        return (
-        <div className='palette-block complement-block'>
-            <div>{palette.type.toUpperCase()}</div>
-            <div className='palette'>
-                <ColourSquare colour={palette.colours[1]}/>
-            </div>
-        </div>
-        )
-    } else {
-        return (
-        <div className='palette-block'>
-            <div>{palette.type.toUpperCase()}</div>
-            <div className='palette'>
-                {
-                    palette.colours.map((colour, index ) => 
-                    <ColourSquare colour={colour} key={index}/>
-                    )
-                }
-            </div>
-        </div>
-        )
-}
-}
+  const handleExpand = (index: number) => {
+    setExpandedIndex(expandedIndex === index ? null : index);
+  };
 
-export default PaletteRender
+  if (palette.type === "Complementary") {
+    return (
+      <div className="palette-block complement-block">
+        <div>{palette.type.toUpperCase()}</div>
+        <div className="palette">
+          <ColourSquare colour={palette.colours[1]} expanded={true} onClick={() => null} />
+        </div>
+      </div>
+    );
+  }
+
+  if (palette.type === "Spectrum") {
+    return (
+        <>
+        </>
+    )
+  }
+
+  return (
+    <div className="palette-block">
+      <div>{palette.type.toUpperCase()}</div>
+      <div className="palette">
+        {palette.colours.map((colour, i) => (
+          <ColourSquare
+            key={i}
+            colour={colour}
+            expanded={ expandedIndex === i }
+            onClick={() => handleExpand(i)}
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default PaletteRender;
