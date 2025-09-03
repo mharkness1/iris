@@ -56,4 +56,16 @@ h1 {
 .secondary-col {
   color: var(--color-secondary)
 }
+.hover-colour-white {
+  background-color: transparent;
+}
+.hover-colour-white:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.hover-colour-black {
+  background-color: transparent;
+}
 
+.hover-colour-black:hover {
+  background-color: rgba(000, 000, 000, 0.1);
+}

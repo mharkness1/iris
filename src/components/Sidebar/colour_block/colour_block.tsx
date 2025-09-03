@@ -10,7 +10,7 @@ type Props = {
 }
 
 const ColourBlock: React.FC<Props> = ({ colour }) => {
-    const useWhite = (colour.luminance < 0.179 );
+    const useWhite = (colour.luminance < 0.3 );
     const colourContext = useContext(ColourContext)
     const setPrimaryColour = colourContext?.setPrimaryColour
 

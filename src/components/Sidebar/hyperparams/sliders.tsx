@@ -18,7 +18,10 @@ const Slider: React.FC<Props> = ({ name, maxValue, minValue, value, onChange }) 
 
     return (
         <div className="w-10/12 flex flex-col mx-auto">
-            <label>{param.toUpperCase()}</label>
+            <div className="flex justify-between pb-1">
+                <label className="text-xl">{param.toUpperCase()}</label>
+                <label className="text-xl">{value}</label>
+            </div>
             <input type="range" min={min} max={max} value={value} onChange={(e) => onChange(Number(e.target.value))}/>
         </div>
     );

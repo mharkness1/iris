@@ -27,7 +27,7 @@ const RemoveColourButton: React.FC<{ col: Colour }> = ({ col }) => {
         <button className='justify-self-start self-start' onClick={(e) => onRemoveClick(e, col.name)}>
             { useWhite ? 
                 <svg
-                    className="w-5 h-5 hover:bg-white"
+                    className="w-5 h-5 hover-colour-white"
                     width="100%"
                     height="100%"
                     viewBox="0 0 473 473"
@@ -54,7 +54,7 @@ const RemoveColourButton: React.FC<{ col: Colour }> = ({ col }) => {
                     </svg> 
             :
                <svg
-                    className="w-5 h-5 hover:bg-black"
+                    className="w-5 h-5 hover-colour-black"
                     width="100%"
                     height="100%"
                     viewBox="0 0 473 473"

@@ -33,6 +33,10 @@
     white-space: nowrap;
     overflow: hidden;
 }
+.sidebar label {
+    white-space: nowrap;
+    overflow: hidden;
+}
 .ParamToggleButton {
     border: 2px solid var(--color-secondary);
     border-bottom: 4px solid var(--color-secondary);
