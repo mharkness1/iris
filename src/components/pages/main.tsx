@@ -12,7 +12,7 @@ const MainPage: React.FC = () => {
   return (
         <div className='whole-page'>
           <ParamSidebar />
-            {primaryColour ?
+            {!primaryColour ?
             <EmptySwatch /> : 
             <Populated />
             }

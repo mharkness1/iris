@@ -1,0 +1,61 @@
+input[type="range"] {
+    /* removing default appearance */
+    -webkit-appearance: none;
+    appearance: none;
+    /* creating a custom design */
+    cursor: pointer;
+    outline: none;
+    box-sizing: border-box; /* ensures borders add inside height */
+    height: 15px;
+    background: var(--color-secondary);
+    border: 2px solid var(--color-secondary);
+    border-top: 2px solid var(--color-secondary);
+    border-right: 4px solid var(--color-secondary);
+    border-bottom: 4px solid var(--color-secondary);
+
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+  height: 15px;
+  background: var(--color-background);
+}
+
+/* Track: Mozilla Firefox */
+input[type="range"]::-moz-range-track {
+  height: 15px;
+  background: var(--color-background);
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  /* removing default appearance */
+  -webkit-appearance: none;
+  appearance: none;
+  /* creating a custom design */
+  height: 15px;
+  width: 4px;
+  background-color: var(--color-background);
+}
+input[type="range"]::-moz-range-thumb {
+  /* removing default appearance */
+  -webkit-appearance: none;
+  appearance: none;
+  /* creating a custom design */
+  height: 15px;
+  width: 4px;
+  border: none;
+  background-color: var(--color-background);
+}
+
+input[type="range"]::-moz-range-progress {
+  height: 15px;
+  background: var(--color-secondary); /* filled section */
+}
+input[type="range"]::-webkit-slider-runnable-track {
+  background: linear-gradient(
+    to right,
+    var(--color-secondary) 0%,                /* filled color */
+    var(--color-secondary) calc(var(--progress) + 0.5%),   /* filled up to progress */
+    var(--color-background) calc(var(--progress) + 0.5%), /* unfilled starts here */
+    var(--color-background) 100%
+  );
+}

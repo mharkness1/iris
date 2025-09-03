@@ -1,9 +1,13 @@
 import ParamToggleButton from './param_Toggle';
 import './sidebar.css'
 import { useState } from 'react';
+import Slider from './hyperparams/sliders';
+import { paramConfigs } from '../../hooks/ParamConfig';
+import { useParamState } from '../../hooks/ParamState';
 
 
 const ParamSidebar: React.FC = () => {
+    const { params, updateParam } = useParamState();
     const [paramSidebar, setParamSidebar] = useState(true);
     const handleParamSidebar = () => {
         setParamSidebar(!paramSidebar)
@@ -15,6 +19,11 @@ const ParamSidebar: React.FC = () => {
                 <div className="text-center">
                     <p>&lt;Params /&gt;</p>
                 </div>
+                {Object.entries(paramConfigs).map(([key, cfg]) => (
+                    <div key={key}>
+                        <Slider name={cfg.label.toUpperCase()} maxValue={cfg.max} minValue={cfg.min} value={params[key]} onChange={(val) => updateParam(key, val)}/>
+                    </div>
+                ))}
             </div>
             <ParamToggleButton handler={handleParamSidebar} />
         </div>
