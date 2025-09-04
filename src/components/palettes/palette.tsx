@@ -24,13 +24,6 @@ const PaletteRender: React.FC<Props> = ({ palette }) => {
     );
   }
 
-  if (palette.type === "Spectrum") {
-    return (
-        <>
-        </>
-    )
-  }
-
   return (
     <div className="palette-block">
       <div>{palette.type.toUpperCase()}</div>

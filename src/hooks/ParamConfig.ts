@@ -60,4 +60,11 @@ export const paramConfigs: Record<string, ParamConfig> = {
         max: 20,
         description: ""
     },
+    spectrumSize: {
+        label: "Spectrum Size",
+        default: 6,
+        min: 2,
+        max: 15,
+        description: "",
+    },
 }

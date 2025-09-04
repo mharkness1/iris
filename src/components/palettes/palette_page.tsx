@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { ColourContext } from "../../context/colourContext";
 import './palette.css'
-import { genAnalagousPalette, genComplement, genMonochromePalette, genQuadraticPalette, genShades, genTetradicPalette, genTriadicPalette, genTints, genTones, genSpectrumPalette, blendColours } from "iris-colour";
+import { genAnalagousPalette, genComplement, genMonochromePalette, genQuadraticPalette, genShades, genTetradicPalette, genTriadicPalette, genTints, genTones, genSpectrumPalette } from "iris-colour";
 import type { PaletteDisplay } from "../pages/populated";
 import { useParamState } from "../../hooks/ParamState";
 import PaletteRow from "./palette_row";
@@ -28,6 +28,8 @@ const PalettePage: React.FC<Props> = ({ paletteDisplay }) => {
     const Tints = genTints(primaryColour, params.stepSize, params.blackTolerance, params.whiteTolerance, params.maxSize)
     const Tones = genTones(primaryColour, params.stepSize, params.grayTolerance, params.maxSize)
 
+    const SpectrumPalettes = colourContext.colours.filter(c => c.hex !== primaryColour.hex).map(c => genSpectrumPalette(primaryColour, c, params.spectrumSize))
+
         return (
             <div className="palette-page">
                 {(paletteDisplay === "fixed" || paletteDisplay === "all") && (
@@ -46,7 +48,9 @@ const PalettePage: React.FC<Props> = ({ paletteDisplay }) => {
                 )}
                 {(paletteDisplay === "spectrum" || paletteDisplay === "all") && (
                     <>
-                    
+                        {SpectrumPalettes.map((palette, i) => (
+                            <PaletteRow key={i} palettes={[palette]} />
+                        ))}
                     </>
                 )}
             </div>
