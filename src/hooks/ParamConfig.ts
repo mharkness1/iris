@@ -1,3 +1,4 @@
+/*
 export const defaultGrayTolerance = 10;
 export const defaultBlackTolerance = 10;
 export const defaultWhiteTolerance = 10;
@@ -7,7 +8,7 @@ export const defaultAnalagousAngle = 30;
 export const defaultHueStepSize = 60;
 export const defaultMaxPaletteSize = 6;
 export const defaultBlendFactor = 0.5;
-
+*/
 
 export type ParamConfig = {
   label: string;
