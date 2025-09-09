@@ -4,6 +4,7 @@ import './index.css'
 import App from './App.tsx'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import AboutPage from './components/pages/about.tsx';
+import SupportPage from './components/pages/support.tsx';
 
 const router = createBrowserRouter([
   {
@@ -14,6 +15,10 @@ const router = createBrowserRouter([
     path: "about",
     element: <AboutPage />,
   },
+  {
+    path: "support",
+    element: <SupportPage />
+  }
 ])
 
 createRoot(document.getElementById('root')!).render(
