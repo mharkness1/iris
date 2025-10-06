@@ -43,6 +43,7 @@ html, body {
   max-height: 100%;
   color: var(--color-secondary);
   transition: color 1s ease;
+  padding-bottom: 3rem;
 
   @media (width < 1024px) {
     flex-direction: column;

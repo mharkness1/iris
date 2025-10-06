@@ -14,7 +14,7 @@ const MainPage: React.FC = () => {
           <div className="order-2 lg:order-1 lg:self-start">
             <ParamSidebar />
           </div>
-          <div className="order-1 lg:order-2 shrink grow main-section">
+          <div className={`order-1 lg:order-2 shrink grow main-section ${!primaryColour ? "" : 'self-start'}`}>
             {!primaryColour ? <EmptySwatch /> : <Populated /> }
           </div>
           <div className="order-3 lg:order-3 lg:self-start">
