@@ -16,7 +16,7 @@ const ParamSidebar: React.FC = () => {
     }
 
     return (
-        <div className='sidebar-wrapper param-sidebar-wrapper pt-5 lg:pt-0'>
+        <div className='sidebar-wrapper param-sidebar-wrapper pt-5 md:pt-0'>
             <div className={`sidebar gap-3 h-full pb-6 left-0 ${paramSidebar ? 'w-80 border-2 border-r-8 border-b-8 lg:mr-2 open' : 'w-0 border-0 border-r-0 border-b-0 mr-1 closed'}`}>
                 <div className="text-center">
                     <p className='hidden lg:block'>&lt;Params /&gt;</p>
