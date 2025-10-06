@@ -14,15 +14,15 @@ const MainPage: React.FC = () => {
           <div className="order-2 md:hidden lg:block lg:order-1 lg:self-start">
             <ParamSidebar />
           </div>
-          <div className={`order-1 lg:order-2 shrink grow main-section ${!primaryColour ? "" : 'self-start'}`}>
+          <div className={`order-1 lg:order-2 shrink grow w-full justify-self-center ${!primaryColour ? "" : 'self-start'}`}>
             {!primaryColour ? <EmptySwatch /> : <Populated /> }
           </div>
           <div className="order-3 md:hidden lg:order-3 lg:block lg:self-start">
             <ColourSidebar />
           </div>
-          <div className="order-4 hidden md:flex lg:hidden flex-ro items-start">
-            <ColourSidebar />
+          <div className="order-4 hidden md:flex lg:hidden flex-row items-start justify-between">
             <ParamSidebar />
+            <ColourSidebar />
           </div>
         </div>
   )

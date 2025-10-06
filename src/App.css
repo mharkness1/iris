@@ -48,8 +48,9 @@ html, body {
   @media (width < 1024px) {
     flex-direction: column;
     height: auto;
-    min-width: 95%;
-    width: 95%;
+    width: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
   }
 }
 

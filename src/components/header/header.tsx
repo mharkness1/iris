@@ -1,10 +1,11 @@
 import ThemeToggle from '../../utils/themeToggle';
 import './header.css'
+import { NavLink, Link } from 'react-router-dom';
 
 const PageHeader: React.FC = () => {
     return (
         <div className="header w-full justify-between">
-            <div className='h-auto w-auto flex rainbow-box-header gap-2 ml-4'>
+            <NavLink to={"/"} className='h-auto w-auto flex rainbow-box-header gap-2 ml-4'>
                 <svg stroke='currentColor' fill='currentColor' width="auto" height="100%" viewBox="0 0 578 489" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" xmlSpace="preserve" style={{ fillRule: 'evenodd', clipRule: 'evenodd', strokeLinejoin: 'round', strokeMiterlimit: 2 }}>
                     <g transform="matrix(1,0,0,1,-47.2441,-59.0551)">
                         <g id="Logo">
@@ -28,13 +29,13 @@ const PageHeader: React.FC = () => {
                         </g>
                     </g>
                 </svg>
-            </div>
+            </NavLink>
             <div className='justify-self-end self-center pr-4 flex'>
                 <button className='m-2 p-3 self-center nav-links'>
-                    <p>ABOUT</p>
+                    <p><Link to={"/about"}>ABOUT</Link></p>
                 </button>
                 <button className='m-2 p-3 self-center nav-links'>
-                    <p>SUPPORT</p>
+                    <p><Link to={"/support"}>SUPPORT</Link></p>
                 </button>
                 <ThemeToggle />
             </div>
@@ -44,9 +45,3 @@ const PageHeader: React.FC = () => {
 
 export default PageHeader;
 
-
-/*                     
-<svg className="w-[48px] h-[48px] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 24 24">
-    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M10 11h2v5m-2 0h4m-2.592-8.5h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
-</svg>
-*/
