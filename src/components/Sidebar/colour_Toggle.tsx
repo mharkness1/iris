@@ -6,9 +6,9 @@ type Props = {
 
 const ColourToggleButton: React.FC<Props> = ({ handler }) => {
     return(
-        <button className="lg:w-12 w-auto h-12 ColourToggleButton flex justify-center items-center px-1" onClick={handler}>
+        <button className="lg:w-12 h-12 ColourToggleButton flex justify-center items-center px-1" onClick={handler}>
             <svg
-            width=""
+            width="40px"
             height="65%"
             viewBox="0 0 90 83"
             version="1.1"

@@ -14,11 +14,11 @@ const Populated: React.FC = () => {
             <div className="main-section">
                 <div className="flex flex-row items-center justify-between">
                     <div className="self-start flex flex-row items-center gap-6">
-                        <p className="text-[2.5rem] pixel-font">#{primaryColour.hex.toUpperCase()}</p>
-                        <button onClick={() => setPaletteDisplay("all")}><p className="text-[2rem] pixel-font hover:underline decoration-4">All</p></button>
-                        <button onClick={() => setPaletteDisplay("fixed")}><p className="text-[2rem] pixel-font hover:underline decoration-4">Fixed</p></button>
-                        <button onClick={() => setPaletteDisplay("variable")}><p className="text-[2rem] pixel-font hover:underline decoration-4">Variable</p></button>
-                        <button onClick={() => setPaletteDisplay("spectrum")}><p className="text-[2rem] pixel-font hover:underline decoration-4">Spectrum</p></button>
+                        <p className="text-[2.2rem] pixel-font">#{primaryColour.hex.toUpperCase()}</p>
+                        <button onClick={() => setPaletteDisplay("all")}><p className="text-[1.8em] pixel-font hover:underline decoration-4">All</p></button>
+                        <button onClick={() => setPaletteDisplay("fixed")}><p className="text-[1.8rem] pixel-font hover:underline decoration-4">Fixed</p></button>
+                        <button onClick={() => setPaletteDisplay("variable")}><p className="text-[1.8rem] pixel-font hover:underline decoration-4">Variable</p></button>
+                        <button onClick={() => setPaletteDisplay("spectrum")}><p className="text-[1.8rem] pixel-font hover:underline decoration-4">Spectrum</p></button>
                     </div>
                 </div>
                 <PalettePage paletteDisplay={paletteDisplay}/>

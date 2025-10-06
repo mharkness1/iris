@@ -29,7 +29,7 @@ const ColourBlock: React.FC<Props> = ({ colour }) => {
 
 
     return (
-        <div className={'colour-block m-3'} style={{ background: cssColour,  border: isPrimaryColour ? '2px solid white' : '2px solid ' + cssColour}} onClick={() => handlePrimaryColour(colour)}>
+        <div className={'colour-block m-3'} style={{ background: cssColour,  border: isPrimaryColour ? '2px solid var(--color-secondary)' : '2px solid ' + cssColour}} onClick={() => handlePrimaryColour(colour)}>
             <div className='text-center w-full self-center'>
                 <p style={{ color: useWhite ? "#ffffff" : "#000000" }} className='text-sm'>#{colour.hex.toUpperCase()}</p>
             </div>

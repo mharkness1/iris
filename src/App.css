@@ -47,8 +47,8 @@ html, body {
   @media (width < 1024px) {
     flex-direction: column;
     height: auto;
-    min-width: 100%;
-    width: 100%;
+    min-width: 95%;
+    width: 95%;
   }
 }
 
