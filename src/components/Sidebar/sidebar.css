@@ -3,22 +3,28 @@
     flex-direction: row;
     align-content: flex-start;
     margin: 1rem;
+
+    @media (width < 1024px) {
+        flex-direction: column;
+    }
 }
 .sidebar {
     left: 0;
     height: 100%;
     display: flex;
     flex-direction: column;
-    /*
-    border: 2px solid;
-    border-right: 8px solid;
-    border-bottom: 8px solid;
-    */
     overflow-y:auto;
     overflow-x: hidden;
     font-family: "Jersey";
     color: var(--color-secondary);
 }
+
+.param-sidebar-wrapper {
+  @media (width < 1024px) {
+    flex-direction: column-reverse;
+  }
+}
+
 /* Opening: border first, then width grows */
 .sidebar.open {
   transition: border-width 0.2s ease, width 0.5s ease 0.2s;
@@ -27,6 +33,7 @@
 /* Closing: width shrinks first, then border disappears */
 .sidebar.closed {
   transition: width 0.5s ease, border-width 0.2s ease 0.5s;
+  overflow-y: hidden;
 }
 .sidebar p {
     font-size: 1.75rem;
@@ -76,4 +83,16 @@
     height:100px;
     padding: 10px;
     border: 2px solid var(--color-secondary);
+}
+
+
+@media (width < 1024px) {
+  .sidebar.closed {
+    height: 0px;
+    transition: width 0.5s ease, height 0.5s ease, border-width 0.2s ease 0.5s;
+  }
+  .sidebar.open {
+    height: auto;
+    transition: border-width 0.2s ease, width 0.5s ease 0.2s, height 0.5s ease 0.2s;
+  }
 }

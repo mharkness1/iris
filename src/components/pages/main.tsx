@@ -11,12 +11,15 @@ const MainPage: React.FC = () => {
   
   return (
         <div className='whole-page'>
-          <ParamSidebar />
-            {!primaryColour ?
-            <EmptySwatch /> : 
-            <Populated />
-            }
-          <ColourSidebar />
+          <div className="order-2 lg:order-1 lg:self-start">
+            <ParamSidebar />
+          </div>
+          <div className="order-1 lg:order-2 shrink grow main-section">
+            {!primaryColour ? <EmptySwatch /> : <Populated /> }
+          </div>
+          <div className="order-3 lg:order-3 lg:self-start">
+            <ColourSidebar />
+          </div>
         </div>
   )
 };

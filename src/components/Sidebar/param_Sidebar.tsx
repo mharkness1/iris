@@ -16,10 +16,10 @@ const ParamSidebar: React.FC = () => {
     }
 
     return (
-        <div className='sidebar-wrapper h-full'>
-            <div className={`sidebar gap-3 h-full left-0 ${paramSidebar ? 'w-80 border-2 border-r-8 border-b-8 mr-2 open' : 'w-0 border-0 border-r-0 border-b-0 mr-1 closed'}`}>
+        <div className='sidebar-wrapper param-sidebar-wrapper'>
+            <div className={`sidebar gap-3 h-full pb-6 left-0 ${paramSidebar ? 'w-80 border-2 border-r-8 border-b-8 mr-2 open' : 'w-0 border-0 border-r-0 border-b-0 mr-1 closed'}`}>
                 <div className="text-center">
-                    <p>&lt;Params /&gt;</p>
+                    <p className='hidden lg:block'>&lt;Params /&gt;</p>
                 <div className='flex justify-between items-center mx-8 my-2'>
                     <RandomiseParamsButton />
                     <CopyParamsButton />

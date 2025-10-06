@@ -17,10 +17,10 @@ const ColourSidebar: React.FC = () => {
 
 
     return (
-        <div className='sidebar-wrapper h-full'>
+        <div className='sidebar-wrapper'>
             <ColourToggleButton handler={ handleColourSidebar }/>
-            <div className={`sidebar h-full right-0 ${colourSidebar ? 'w-60 border-2 border-r-8 border-b-8 ml-2 open' : 'w-0 border-0 border-r-0 border-b-0 ml-1 closed'}`}>
-                <div className="text-center">
+            <div className={`sidebar h-full ml-0 right-0 ${colourSidebar ? 'w-60 border-2 border-r-8 border-b-8 lg:ml-2 open' : 'w-0 border-0 border-r-0 border-b-0 lg:ml-1 closed'}`}>
+                <div className="hidden lg:block text-center">
                     <p>&lt;Colours /&gt;</p>
                 </div>
                 <div className='colour-list'>
