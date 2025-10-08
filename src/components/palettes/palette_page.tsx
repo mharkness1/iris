@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { ColourContext } from "../../context/colourContext";
 import './palette.css'
-import { genAnalagousPalette, genComplement, genMonochromePalette, genQuadraticPalette, genShades, genTetradicPalette, genTriadicPalette, genTints, genTones, genSpectrumPalette } from "iris-colour";
+import { genAnalogousPalette, genComplement, genMonochromePalette, genQuadraticPalette, genShades, genTetradicPalette, genTriadicPalette, genTints, genTones, genSpectrumPalette } from "iris-colour";
 import type { PaletteDisplay } from "../pages/populated";
 import { useParamState } from "../../hooks/ParamState";
 import PaletteRow from "./palette_row";
@@ -19,7 +19,7 @@ const PalettePage: React.FC<Props> = ({ paletteDisplay }) => {
     if (!primaryColour) return null;
 
     const ComplementPalette = genComplement(primaryColour)
-    const AnalagousPalette = genAnalagousPalette(primaryColour, params.analagousAngle)
+    const AnalogousPalette = genAnalogousPalette(primaryColour, params.analogousAngle)
     const TriadicPalette = genTriadicPalette(primaryColour)
     const TetraticPalette = genTetradicPalette(primaryColour)
     const QuadraticPalette = genQuadraticPalette(primaryColour)
@@ -34,7 +34,7 @@ const PalettePage: React.FC<Props> = ({ paletteDisplay }) => {
             <div className="palette-page">
                 {(paletteDisplay === "fixed" || paletteDisplay === "all") && (
                 <>
-                    <PaletteRow palettes={[ComplementPalette, AnalagousPalette, TriadicPalette]} />
+                    <PaletteRow palettes={[ComplementPalette, AnalogousPalette, TriadicPalette]} />
                     <PaletteRow palettes={[TetraticPalette, QuadraticPalette]} />
                 </>
                 )}

@@ -1,0 +1,46 @@
+.about-page {
+    h1 {
+        font-size: 4rem;
+        font-family: Jersey;
+    }
+    h2 {
+        font-size: 3rem;
+        font-family: Jersey;
+    }
+    h3 {
+        font-size: 2.5rem;
+        font-family: Jersey;
+    }
+    h4 {
+        font-size: 2rem;
+        font-family: Jersey;
+    }
+    p {
+        padding-block: 1rem;
+    }
+    pre {
+        font-size: 0.8rem;
+        background-color: var(--color-hover);
+        padding-block: 0.5rem;
+        margin-left: 1rem;
+        margin-right: 1rem;
+        padding-left: 2rem;
+    }
+    code {
+        background-color: var(--color-hover);
+        font-family: monospace;
+    }
+    strong {
+        font-family: Jersey;
+        font-size: 1.5rem;
+    }
+    table, th, td {
+        border: 1px var(--color-hover) solid;
+    }
+    th, td {
+        padding: 5px;
+    }
+    thead {
+        text-align: left;
+    }
+}
