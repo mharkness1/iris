@@ -6,7 +6,7 @@ const AboutPage: React.FC = () => {
   return (
     <>
       <PageHeader />
-      <div className="main-section px-30 about-page">
+      <div className="px-30 about-page">
         <h1 className="pixel-font">About Iris</h1>
         <p>
           To the best of my knowledge this colour library does something that

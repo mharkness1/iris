@@ -53,11 +53,11 @@ export default function ThemeToggle() {
   return (
     <button
       onClick={toggleTheme}
-      className="p-2"
+      className="p-2 self-center"
     >
       {theme === "light" ?
       
-    <svg className="w-12 h-12 secondary-col" viewBox="0 0 1182 1182" version="1.1"  xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" xmlSpace="preserve" style={{ fill: "currentColor", stroke: "currentColor", fillRule: "evenodd", clipRule: "evenodd", strokeLinejoin: "round", strokeMiterlimit: 2 }}>
+    <svg className="sm:w-12 sm:h-12 w-5 h-5 secondary-col" viewBox="0 0 1182 1182" version="1.1"  xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" xmlSpace="preserve" style={{ fill: "currentColor", stroke: "currentColor", fillRule: "evenodd", clipRule: "evenodd", strokeLinejoin: "round", strokeMiterlimit: 2 }}>
 <g id="Sun" transform="matrix(3.98906e-16,6.51463,-6.51463,3.98906e-16,4598.92,-1738.84)">
         <g transform="matrix(6.12323e-17,-1,1,6.12323e-17,-464.978,847.67)">
             <path d="M189.028,827.761L189.028,798.302L198.465,798.302L198.465,788.837L208.292,788.837L208.292,779.621L255.889,779.654L255.889,789.091L265.354,789.091L265.354,798.528L274.819,798.528L274.819,846.686L265.383,846.686L265.383,856.151L255.946,856.151L255.946,865.617L208.018,865.617L208.018,856.18L198.553,856.18L198.553,846.743L189.088,846.743L189.088,827.761L189.028,827.761ZM207.902,807.767L207.902,817.689L208.018,817.689L208.018,837.306L217.484,837.306L217.484,846.743L237.072,846.743L237.072,846.686L246.509,846.686L246.509,837.221L255.946,837.221L255.946,808.022L246.423,807.964L246.423,798.528L227.165,798.528L227.165,798.551L217.338,798.551L217.338,807.767L207.902,807.767Z"/>
@@ -131,7 +131,7 @@ export default function ThemeToggle() {
 
 :
 <svg
-  className="w-12 h-12 secondary-col"
+  className="sm:w-12 sm:h-12 w-6 h-6 secondary-col"
   viewBox="0 0 1182 1182"
   xmlns="http://www.w3.org/2000/svg"
   preserveAspectRatio="xMidYMid meet"

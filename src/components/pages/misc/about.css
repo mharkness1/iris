@@ -1,4 +1,13 @@
 .about-page {
+    color: var(--color-secondary);
+    transition: color 1s ease;
+    width: 100dvw;
+
+    @media (width < 450px) {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
     h1 {
         font-size: 4rem;
         font-family: Jersey;
@@ -17,6 +26,7 @@
     }
     p {
         padding-block: 1rem;
+        font-size: 1rem;
     }
     pre {
         font-size: 0.8rem;
@@ -36,6 +46,9 @@
     }
     table, th, td {
         border: 1px var(--color-hover) solid;
+        @media (width < 450px) {
+            font-size: 0.65rem;
+        }
     }
     th, td {
         padding: 5px;

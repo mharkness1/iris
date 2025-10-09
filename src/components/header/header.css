@@ -18,6 +18,9 @@
     border-right: 8px solid var(--color-secondary);
     border-bottom: 8px solid var(--color-secondary);
     background-color: var(--color-background);
+    @media (width < 450px) {
+        padding: 0.1rem;
+    }
 }
 
 .rainbow-box-header svg {
@@ -42,6 +45,9 @@
   font-size: 2rem;
   color: var(--color-secondary);
   transition: color 1s ease;
+  @media (width < 450px) {
+    font-size: 1.3rem;
+  }
 }
 .nav-links:hover {
   text-decoration: underline;

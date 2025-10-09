@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { ColourContext } from "../../../context/colourContext";
-import '../../App.css'
+import '../../../App.css'
 import PalettePage from "../../palettes/palette_page";
 
 export type PaletteDisplay = "all" | "fixed" | "variable" | "spectrum"

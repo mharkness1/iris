@@ -1,6 +1,6 @@
 import React from "react";
 import InputColour from "../../input/input_main";
-import '../../App.css'
+import '../../../App.css'
 
 const EmptySwatch: React.FC = () => {
  

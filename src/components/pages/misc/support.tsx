@@ -17,7 +17,7 @@ const SupportPage: React.FC = () => {
           I made this for myself, both to learn and for a separate project
           (which ended up needed a Golang version anyway!) but if you find it
           valueable you can monetarily contribute to its ongoing development
-          here: <a href="https://buymeacoffee.com/mharkness">Buy me a coffee</a>
+          here: <a className="underline underline-offset-5 bg-hover" href="https://buymeacoffee.com/mharkness">Buy me a coffee</a>
         </p>
         <em>it's just me, i'm new to this, give me ideas and advice — please!</em>
         <p>

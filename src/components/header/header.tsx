@@ -30,11 +30,11 @@ const PageHeader: React.FC = () => {
                     </g>
                 </svg>
             </NavLink>
-            <div className='justify-self-end self-center pr-4 flex'>
-                <button className='m-2 p-3 self-center nav-links'>
+            <div className='justify-self-end self-center flex'>
+                <button className='m-1 p-3 self-center nav-links'>
                     <p><Link to={"/about"}>ABOUT</Link></p>
                 </button>
-                <button className='m-2 p-3 self-center nav-links'>
+                <button className='m-1 p-3 self-center nav-links'>
                     <p><Link to={"/support"}>SUPPORT</Link></p>
                 </button>
                 <ThemeToggle />
