@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { ColourContext } from "../../context/colourContext";
 import './palette.css'
 import { genAnalogousPalette, genComplement, genMonochromePalette, genQuadraticPalette, genShades, genTetradicPalette, genTriadicPalette, genTints, genTones, genSpectrumPalette } from "iris-colour";
-import type { PaletteDisplay } from "../pages/populated";
+import type { PaletteDisplay } from "../pages/palettes/populated";
 import { useParamState } from "../../hooks/ParamState";
 import PaletteRow from "./palette_row";
 

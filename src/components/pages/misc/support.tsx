@@ -1,4 +1,4 @@
-import PageHeader from "../header/header";
+import PageHeader from "../../header/header";
 import './about.css'
 
 const SupportPage: React.FC = () => {

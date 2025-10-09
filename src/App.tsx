@@ -1,7 +1,7 @@
 import './App.css'
 import { ColourProvider } from './context/colourProvider';
 import PageHeader from './components/header/header';
-import MainPage from './components/pages/main';
+import MainPage from './components/pages/palettes/main';
 
 
 function App() {

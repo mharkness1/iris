@@ -1,5 +1,5 @@
 /* eslint-disable no-useless-escape */
-import PageHeader from "../header/header";
+import PageHeader from "../../header/header";
 import "./about.css";
 
 const AboutPage: React.FC = () => {
